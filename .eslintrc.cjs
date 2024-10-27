@@ -9,14 +9,15 @@ module.exports = {
       'plugin:react-hooks/recommended',
       'plugin:prettier/recommended',
     ],
-    ignorePatterns: ['dist', '.eslintrc.cjs', 'node_modules/**', 'vite-env.d.ts'],
+    ignorePatterns: ['dist', '.eslintrc.cjs', 'node_modules/**', 'vite-env.d.ts', 'vite.config.ts'],
     parser: '@typescript-eslint/parser',
     parserOptions: {
       project: './tsconfig.json',
     },
     plugins: ['react-refresh', 'prettier', 'typesafe',],
     rules: {
-      'import/extensions': 'never',
+      'import/no-extraneous-dependencies': 0,
+      'import/extensions': 0,
       '@typescript-eslint/explicit-function-return-type': 'error',
       '@typescript-eslint/naming-convention': [
         'error',

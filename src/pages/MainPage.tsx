@@ -1,9 +1,9 @@
 import { ReactElement } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useAppSelector, useAppDispatch } from '@/redux/hooks.ts';
-import { increment } from '@/redux/features/example/exampleSlice.ts';
-import ButtonUsage from '@/components/Button/ButtonUsage.tsx';
-import Form from '@/components/FormExample/Form.tsx';
+import { increment } from '@/redux/exampleSlice';
+import Button from '@/components/Button';
+import FormExample from '@/components/FormExample';
 
 export default function MainPage(): ReactElement {
   const count = useAppSelector((state) => state.example.value);
@@ -13,10 +13,10 @@ export default function MainPage(): ReactElement {
     <div>
       {t('example')} {count}
       <button type="submit" onClick={() => dispatch(increment())}>
-        click
+        {t('buttonExample')}
       </button>
-      <ButtonUsage />
-      <Form />
+      <Button />
+      <FormExample />
     </div>
   );
 }
