@@ -15,9 +15,8 @@ module.exports = {
       project: './tsconfig.json',
     },
     plugins: ['react-refresh', 'prettier', 'typesafe',],
+    
     rules: {
-      'import/no-extraneous-dependencies': 0,
-      'import/extensions': 0,
       '@typescript-eslint/explicit-function-return-type': 'error',
       '@typescript-eslint/naming-convention': [
         'error',
@@ -45,7 +44,24 @@ module.exports = {
       'spaced-comment': ['warn', 'always'],
   
       'react/forbid-component-props': ['error', { forbid: ['style'] }],
+      'import/extensions': 0,
       'import/no-relative-parent-imports': 'error',
+      'import/order': ['error', {
+        'groups': ['builtin', 'external', 'internal', 'parent', 'sibling', 'index'],
+        'pathGroups': [
+          {
+            'pattern': '@nestjs/**',
+            'group': 'external',
+            'position': 'before',
+          },
+        ],
+        'pathGroupsExcludedImportTypes': ['builtin'],
+        'newlines-between': 'always',
+        'alphabetize': {
+          'order': 'asc',
+          'caseInsensitive': true,
+        },
+      }],
       'react/react-in-jsx-scope': 0,
       'react/jsx-props-no-spreading': 0,
       'react-refresh/only-export-components': [

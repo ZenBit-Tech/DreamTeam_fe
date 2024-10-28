@@ -1,5 +1,6 @@
 import { FieldValues, useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
+
 import ExampleStyledForm from './styles';
 
 export default function Form(): React.ReactElement {
