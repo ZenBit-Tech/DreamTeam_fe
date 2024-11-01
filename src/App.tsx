@@ -1,8 +1,11 @@
-import { RouterProvider } from 'react-router-dom';
+import React from "react";
+import SignInPage from "@/pages/SignInPage/SignInPage.tsx";
 
-import './App.css';
-import router from './routes/router';
+const App: React.FC = () => {
+    return (
+        <SignInPage/>
 
-export default function App(): React.ReactElement {
-  return <RouterProvider router={router} />;
-}
+    );
+};
+
+export default App;
