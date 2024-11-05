@@ -1,42 +1,57 @@
-import { BodyBase, BodyBaseLarge, BodySmall } from "@/assets/styles/typography.ts";
+import { BodyBase, BodyBaseLarge, BodySmall } from "@/assets/styles/typography";
+import { COLORS } from "@/assets/styles/constants/colors";
+import {ReactNode} from "react";
 
-export type ButtonProps = {
-    variant?: "primary" | "secondary" | "outline" | "disabled" | "dotted" | "glowing";
-    size?: "small" | "medium" | "large" | "huge";
-    icon?: React.ReactNode;
-    iconRight?: React.ReactNode;
-    buttonColor?: string;
-    dotColor?: string;
-    onClick?: () => void;
-    children: React.ReactNode;
-};
+export const buttonVariants = {
+    primary: "primary",
+    secondary: "secondary",
+    outline: "outline",
+    disabled: "disabled",
+    dotted: "dotted",
+    glowing: "glowing",
+} as const;
 
-export type ArrowButtonProps = {
-    variant?: "primary" | "secondary" | "outline" | "disabled" | "glowing";
-    size?: "small" | "medium" | "large";
-    buttonColor?: string;
-    onClick?: () => void;
-};
-
-export const defaultButtonColors = {
-    primary: "#7367F0",
-    secondary: "#5249AA",
-    outline: "#7367F0",
-    disabled: "#D0D5DD",
-    glowing: "#7367F0",
-    glowingBorder: "#BFB9F8",
-};
+export type ButtonVariant = keyof typeof buttonVariants;
 
 export const buttonSizes = {
     small: "32px",
     medium: "48px",
     large: "56px",
     huge: "38px",
-};
+} as const;
+
+export type ButtonSize = keyof typeof buttonSizes;
+
+export const buttonColors = {
+    primary: COLORS.accent500,
+    secondary: COLORS.accent700,
+    outline: COLORS.accent500,
+    disabled: COLORS.disabled,
+    glowing: COLORS.accent500,
+    glowingBorder: COLORS.accent700,
+} as const;
 
 export const typographyStyles = {
     small: BodySmall,
     medium: BodyBase,
     large: BodyBaseLarge,
-    huge:BodyBaseLarge
+    huge: BodyBaseLarge,
+} as const;
+
+export type ButtonProps = {
+    variant?: ButtonVariant;
+    size?: ButtonSize;
+    icon?: ReactNode;
+    iconRight?: ReactNode;
+    buttonColor?: string;
+    dotColor?: string;
+    onClick?: () => void;
+    children: ReactNode;
+};
+
+export type ArrowButtonProps = {
+    variant?: Exclude<ButtonVariant, "dotted">;
+    size?: Exclude<ButtonSize, "huge">;
+    buttonColor?: string;
+    onClick?: () => void;
 };

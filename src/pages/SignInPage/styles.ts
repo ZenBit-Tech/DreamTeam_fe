@@ -1,10 +1,11 @@
 import styled from "styled-components";
+import {COLORS} from "@/assets/styles/constants/colors.ts";
 
 export const PageContainer = styled.div`
     display: flex;
     align-items: center;
     height: 100vh;
-    background-color: #f5f5f5;
+    background-color: ${COLORS.signInContainer};
 `;
 
 export const LeftContainer = styled.div`
@@ -19,7 +20,7 @@ export const RightContainer = styled.div`
     max-width: 700px;
     height: 100vh;
     padding: 40px;
-    background-color: #fff;
+    background-color: ${COLORS.surfaceContainerLowest};
     display: flex;
     flex-direction: column;
     justify-content: center;

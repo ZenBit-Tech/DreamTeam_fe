@@ -10,9 +10,9 @@ export const SignInBtn = styled.button`
     border-radius: 6px;
     font-size: 15px;
     line-height: 22px;
-    color: ${COLORS.backgroundLight};
+    color: ${COLORS.onPrimary};
     font-family: ${FONTS.PUBLIC_SANS};
-    background-color: ${COLORS.buttonPurple};
+    background-color: ${COLORS.accent500};
     margin-top: 14px;
     border: none; 
     box-sizing: border-box; 

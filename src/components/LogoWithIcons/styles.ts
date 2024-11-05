@@ -28,7 +28,7 @@ export const IconWrapperTopLeft = styled.div`
     align-items: center;
     justify-content: center;
     padding: 5px;
-    border: 2px solid ${COLORS.buttonPurple}; 
+    border: 2px solid ${COLORS.accent500}; 
 `;
 
 export const IconWrapperBottomRight = styled.div`
@@ -43,5 +43,5 @@ export const IconWrapperBottomRight = styled.div`
     align-items: center;
     justify-content: center;
     padding: 5px;
-    border: 2px solid ${COLORS.buttonPurple}; 
+    border: 2px solid ${COLORS.accent500}; 
 `;

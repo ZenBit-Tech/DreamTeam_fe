@@ -1,32 +1,17 @@
 import React from "react";
 import { Avatar, Box } from "@mui/material";
 import { BodyStrong, BodySmall, BodyBase } from "@/assets/styles/typography";
-import {COLORS} from "@/assets/styles/constants/colors.ts";
+import { COLORS } from "@/assets/styles/constants/colors";
+import { hexToRgb } from "@/utils/colorUtils";
+import { getInitials } from "@/utils/stringUtils.ts";
 
 interface ProfileCardProps {
     companyName: string;
     email: string;
 }
 
-const hexToRgb = (hex: string) => {
-    const bigint = parseInt(hex.slice(1), 16);
-    const r = (bigint >> 16) & 255;
-    const g = (bigint >> 8) & 255;
-    const b = bigint & 255;
-
-    return `${r}, ${g}, ${b}`;
-};
-
 export const NameBaige: React.FC<ProfileCardProps> = ({ companyName, email }) => {
-    const getInitials = (name: string) => {
-        return name
-            .split(" ")
-            .map(word => word[0])
-            .join("")
-            .toUpperCase();
-    };
-
-    const rgbColor = hexToRgb(COLORS.buttonPurple);
+    const rgbColor: string = hexToRgb(COLORS.accent500);
 
     return (
         <Box
@@ -47,7 +32,7 @@ export const NameBaige: React.FC<ProfileCardProps> = ({ companyName, email }) =>
             >
                 <BodyBase
                     sx={{
-                        color: COLORS.buttonPurple,
+                        color: COLORS.accent500,
                         fontWeight: 400,
                         fontSize: "16px",
                     }}
@@ -56,7 +41,7 @@ export const NameBaige: React.FC<ProfileCardProps> = ({ companyName, email }) =>
                 </BodyBase>
             </Avatar>
             <Box sx={{ display: "flex", flexDirection: "column" }}>
-                <BodyStrong color={COLORS.textMain}>
+                <BodyStrong color={COLORS.onSurfaceVariant}>
                     {companyName}
                 </BodyStrong>
                 <BodySmall color="text.secondary">
@@ -66,5 +51,3 @@ export const NameBaige: React.FC<ProfileCardProps> = ({ companyName, email }) =>
         </Box>
     );
 };
-
-

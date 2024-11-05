@@ -9,14 +9,14 @@ export const StyledLoginInput = styled.input`
     border-radius: 6px;
     font-size: 15px;
     line-height: 22px;
-    color: ${COLORS.textMain};
+    color: ${COLORS.onSurfaceVariant};
     font-family: ${FONTS.PUBLIC_SANS};
-    border: 1px solid #dcdcdc;
+    border: 1px solid ${COLORS.secondaryContainer};
     box-sizing: border-box; 
     gap: 12px;
     opacity: 1;
     ::placeholder {
-        color: #c4c4c4;
+        color: ${COLORS.onSurfaceVariant};
         opacity: 1;
     }
 `;

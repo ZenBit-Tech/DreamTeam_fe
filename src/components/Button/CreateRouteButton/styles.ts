@@ -11,9 +11,9 @@ export const CreateRouteBtn = styled.div`
     font-size: ${SIZES.paragraph};
     line-height: 17.63px;
     font-weight: 500;
-    color: ${COLORS.textSecondary};
+    color: ${COLORS.outline};
     font-family: ${FONTS.PUBLIC_SANS};
-    background-color: ${COLORS.buttonPurple};
+    background-color: ${COLORS.accent500};
     margin-top: 14px;
 
     display: flex;
