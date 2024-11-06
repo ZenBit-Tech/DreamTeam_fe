@@ -1,26 +1,36 @@
 import React from "react";
 import styled, { css } from "styled-components";
 import { ArrowBack } from "@mui/icons-material";
-import { ArrowButtonProps, buttonSizes, buttonColors } from "@/assets/styles/constants/buttonConstants";
+import {
+    ArrowButtonProps,
+    buttonSizes,
+    buttonColors,
+    buttonVariants,
+    ButtonVariant,
+    ButtonSize,
+    iconSizes,
+    defaultButtonSize
+} from "@/assets/styles/constants/buttonConstants";
 import { COLORS } from "@/assets/styles/constants/colors";
 import { FONTS } from "@/assets/styles/constants/fonts";
-import { buttonVariants } from "@/assets/styles/constants/buttonConstants";
 
 const ArrowButtonStyled = styled.button<{
     $buttonColor?: string;
-} & ArrowButtonProps>`
+    size: ButtonSize;
+    variant: ButtonVariant;
+}>`
     display: flex;
     align-items: center;
     justify-content: center;
-    width: ${({ size }) => buttonSizes[size || "medium"]};
-    height: ${({ size }) => buttonSizes[size || "medium"]};
+    width: ${({ size }) => buttonSizes[size]};
+    height: ${({ size }) => buttonSizes[size]};
     background-color: ${({ variant, $buttonColor }) =>
             variant === buttonVariants.outline || variant === buttonVariants.glowing
                     ? "transparent"
-                    : $buttonColor || buttonColors[variant || "primary"]};
+                    : $buttonColor || buttonColors[variant as ButtonVariant]};
     color: ${({ variant, $buttonColor }) =>
             variant === buttonVariants.outline || variant === buttonVariants.glowing
-                    ? $buttonColor || buttonColors[variant || "primary"]
+                    ? $buttonColor || buttonColors[variant as ButtonVariant]
                     : COLORS.onPrimary};
     border: ${({ variant, $buttonColor }) =>
             variant === buttonVariants.outline || variant === buttonVariants.glowing
@@ -46,22 +56,22 @@ const ArrowButtonStyled = styled.button<{
 `;
 
 export const ArrowButton: React.FC<ArrowButtonProps> = ({
-                                                            variant = "primary",
-                                                            size = "medium",
+                                                            variant = buttonVariants.primary,
+                                                            size = defaultButtonSize,
                                                             buttonColor,
                                                             onClick,
                                                         }) => (
     <ArrowButtonStyled
         $buttonColor={buttonColor}
-        variant={variant}
-        size={size}
+        variant={variant as ButtonVariant}
+        size={size as ButtonSize}
         onClick={onClick}
     >
         <ArrowBack
             style={{
-                fontSize: size === "large" ? 24 : 20,
+                fontSize: iconSizes[size],
                 color: variant === buttonVariants.outline || variant === buttonVariants.glowing
-                    ? buttonColor || buttonColors[variant]
+                    ? buttonColor || buttonColors[variant as ButtonVariant]
                     : COLORS.onPrimary,
             }}
         />

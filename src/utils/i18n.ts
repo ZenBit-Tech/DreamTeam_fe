@@ -6,12 +6,14 @@ const resources = {
     translation: {
       welcomeMessage: "Welcome to Smartporters! 👋",
       signInPrompt: "Please sign in to your account and start the delivery",
+      emailLabel: "Email",
     },
   },
   fr: {
     translation: {
       welcomeMessage: "Bienvenue chez Smartporters! 👋",
       signInPrompt: "Veuillez vous connecter à votre compte et commencer la livraison",
+      emailLabel: "E-mail"
     },
   },
 };

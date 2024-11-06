@@ -7,9 +7,9 @@ export const buttonVariants = {
     secondary: "secondary",
     outline: "outline",
     disabled: "disabled",
-    dotted: "dotted",
     glowing: "glowing",
-} as const;
+    dotted: "dotted", // Добавлен вариант dotted
+};
 
 export type ButtonVariant = keyof typeof buttonVariants;
 
@@ -18,9 +18,19 @@ export const buttonSizes = {
     medium: "48px",
     large: "56px",
     huge: "38px",
-} as const;
+} ;
+
 
 export type ButtonSize = keyof typeof buttonSizes;
+
+export const iconSizes = {
+    small: "16px",
+    medium: "20px",
+    large: "24px",
+    huge: "28px",
+};
+
+export const defaultButtonSize: ButtonSize = "medium";
 
 export const buttonColors = {
     primary: COLORS.accent500,
@@ -29,14 +39,18 @@ export const buttonColors = {
     disabled: COLORS.disabled,
     glowing: COLORS.accent500,
     glowingBorder: COLORS.accent700,
-} as const;
+    dotted: COLORS.accent500,
+};
+
+export type ButtonColors = keyof typeof buttonColors;
+
 
 export const typographyStyles = {
     small: BodySmall,
     medium: BodyBase,
     large: BodyBaseLarge,
     huge: BodyBaseLarge,
-} as const;
+};
 
 export type ButtonProps = {
     variant?: ButtonVariant;

@@ -1,18 +1,18 @@
 import React from "react";
 import { PageContainer, LeftContainer, RightContainer } from "./styles.ts";
-import { LogoWithIcons } from "@/components/LogoWithIcons/LogoWithIcons";
-import SignInInput from "@/components/Inputs/login/SignInInput.tsx";
-import { SignInTitle } from "@/components/Titles/login/SignInTitle.tsx";
+import {SignInTitle} from "@/components/Titles/SignIn";
 import { SignInButton } from "@/components/Button/SignIn/SignInButton.tsx";
+import {LogoWithIcons} from "@/components/LogoWithIcons";
+import {SignInInput} from "@/components/Inputs/SignIn";
 
-const SignInPage: React.FC = () => {
+export const SignInPage: React.FC = () => {
     return (
         <PageContainer>
             <LeftContainer>
                 <LogoWithIcons />
             </LeftContainer>
             <RightContainer>
-                <SignInTitle />
+                <SignInTitle/>
                 <SignInInput />
                 <SignInButton />
             </RightContainer>
@@ -20,4 +20,4 @@ const SignInPage: React.FC = () => {
     );
 };
 
-export default SignInPage;
+
