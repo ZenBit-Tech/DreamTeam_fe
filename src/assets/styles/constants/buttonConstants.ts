@@ -1,6 +1,6 @@
 import { BodyBase, BodyBaseLarge, BodySmall } from "@/assets/styles/typography";
 import { COLORS } from "@/assets/styles/constants/colors";
-import {ReactNode} from "react";
+import { ReactNode } from "react";
 
 export const buttonVariants = {
     primary: "primary",
@@ -8,7 +8,7 @@ export const buttonVariants = {
     outline: "outline",
     disabled: "disabled",
     glowing: "glowing",
-    dotted: "dotted", // Добавлен вариант dotted
+    dotted: "dotted",
 };
 
 export type ButtonVariant = keyof typeof buttonVariants;
@@ -18,8 +18,7 @@ export const buttonSizes = {
     medium: "48px",
     large: "56px",
     huge: "38px",
-} ;
-
+};
 
 export type ButtonSize = keyof typeof buttonSizes;
 
@@ -44,7 +43,6 @@ export const buttonColors = {
 
 export type ButtonColors = keyof typeof buttonColors;
 
-
 export const typographyStyles = {
     small: BodySmall,
     medium: BodyBase,
@@ -57,7 +55,7 @@ export type ButtonProps = {
     size?: ButtonSize;
     icon?: ReactNode;
     iconRight?: ReactNode;
-    buttonColor?: string;
+    buttonColor?: ButtonColors;
     dotColor?: string;
     onClick?: () => void;
     children: ReactNode;
@@ -66,6 +64,6 @@ export type ButtonProps = {
 export type ArrowButtonProps = {
     variant?: Exclude<ButtonVariant, "dotted">;
     size?: Exclude<ButtonSize, "huge">;
-    buttonColor?: string;
+    buttonColor?: ButtonColors;
     onClick?: () => void;
 };

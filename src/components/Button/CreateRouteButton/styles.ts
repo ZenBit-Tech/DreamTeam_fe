@@ -11,7 +11,7 @@ export const CreateRouteBtn = styled.div`
     font-size: ${SIZES.paragraph};
     line-height: 17.63px;
     font-weight: 500;
-    color: ${COLORS.outline};
+    color: ${COLORS.signInContainer};
     font-family: ${FONTS.PUBLIC_SANS};
     background-color: ${COLORS.accent500};
     margin-top: 14px;

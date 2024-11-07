@@ -106,7 +106,7 @@ export const BodyLink = styled(Typography)({
   fontSize: SIZES.bodyBase,
   lineHeight: "140%",
   letterSpacing: "0%",
-  color: COLORS.textPrimary,
+  color: COLORS.primary,
   textDecoration: "underline",
 });
 

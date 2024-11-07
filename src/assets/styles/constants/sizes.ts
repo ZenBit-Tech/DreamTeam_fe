@@ -8,4 +8,5 @@ export const SIZES = {
     paragraph: "15px",
     bodyBase: "16px",
     bodyStrong: "16px",
+    iconSize: "24px"
 };

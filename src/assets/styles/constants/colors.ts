@@ -7,6 +7,7 @@ export const COLORS = {
     accent50: "#F1F0FE",
     accent900: "#302B65",
     accent700: "#5249AA",
+    primary: "#1A0DAB",
 
     secondary: "#625B71",
     onSecondary: "#FFFFFF",
