@@ -4,16 +4,16 @@ import { initReactI18next } from 'react-i18next';
 const resources = {
   en: {
     translation: {
-      example: 'example',
-      buttonExample: 'Click',
-      inputErrorExample: 'This field is required',
+      welcomeMessage: "Welcome to Smartporters! 👋",
+      signInPrompt: "Please sign in to your account and start the delivery",
+      emailLabel: "Email",
     },
   },
   fr: {
     translation: {
-      example: 'example French',
-      buttonExample: 'Click French',
-      inputErrorExample: 'This field is required',
+      welcomeMessage: "Bienvenue chez Smartporters! 👋",
+      signInPrompt: "Veuillez vous connecter à votre compte et commencer la livraison",
+      emailLabel: "E-mail"
     },
   },
 };
