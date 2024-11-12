@@ -1,0 +1,32 @@
+import styled from "styled-components";
+import { SIZES } from "@/assets/styles/constants/sizes.ts";
+import { FONTS } from "@/assets/styles/constants/fonts.ts";
+import { COLORS } from "@/assets/styles/constants/colors.ts";
+
+export const PaginationContainer = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: space-between; 
+    padding: ${SIZES.bodyStrong};
+    font-family: ${FONTS.PUBLIC_SANS};
+    font-size: ${SIZES.label};
+    color: ${COLORS.onSurfaceVariant};
+`;
+
+export const PaginationButton = styled.button<{ active?: boolean }>`
+    background-color: ${(props) => (props.active ? COLORS.accent500 : COLORS.surfaceContainerLow)};
+    color: ${(props) => (props.active ? COLORS.onPrimary : COLORS.onSurface)};
+    border: none;
+    border-radius: 4px;
+    padding: 8px 12px;
+    margin: 0 4px;
+    cursor: ${(props) => (props.active ? "default" : "pointer")};
+    opacity: ${(props) => (props.active ? 1 : 0.8)};
+    &:disabled {
+        cursor: not-allowed;
+        opacity: 0.5;
+    }
+    &:hover {
+        background-color: ${(props) => (props.active ? COLORS.accent600 : COLORS.surfaceContainerHigh)};
+    }
+`;

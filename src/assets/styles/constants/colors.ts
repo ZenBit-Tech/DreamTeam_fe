@@ -52,5 +52,10 @@ export const COLORS = {
     shadow: "#000000",
 
     disabled: "#D0D5DD",
-    signInContainer: "#F8F7FA"
+    signInContainer: "#F8F7FA",
+
+    completed:"#28c56e",
+    completedBack:"#daf4e6",
+
+    paragraph:"#4B465C",
 };
