@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import {Order} from "@/assets/styles/types.ts";
+import {Order} from "@/types.ts";
 
 const API_BASE_URL = "http://localhost:3000/v1";
 

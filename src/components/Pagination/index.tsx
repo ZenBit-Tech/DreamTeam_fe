@@ -1,7 +1,7 @@
 import React from "react";
 import { PaginationButton, PaginationContainer } from "@/components/Pagination/styles.ts";
 import {ParagraphSmall} from "@/assets/styles/typography.ts";
-import {PaginationProps} from "@/assets/styles/types.ts";
+import {PaginationProps} from "@/types.ts";
 
 export const Pagination: React.FC<PaginationProps> = ({
                                                           page,

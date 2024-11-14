@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { useGetOrdersQuery } from "@/redux/apiSlice";
 import {
     TableContainer,
@@ -11,16 +12,17 @@ import { NameBaige } from "@/components/Baige/NameBaige.tsx";
 import { formatCollectionTime } from "@/utils/timeUtils.ts";
 import { Paragraph } from "@/assets/styles/typography.ts";
 import { Tooltip, TooltipContainer } from "@/components/Tooltip/styles.ts";
-import {Pagination} from "@/components/Pagination";
-import {OrderStatus} from "@/assets/styles/types.ts";
-import {StatusBadge} from "@/utils/statusBadgeUtils.ts";
+import { Pagination } from "@/components/Pagination";
+import { OrderStatus } from "@/types.ts";
+import { StatusBadge } from "@/utils/statusBadgeUtils.ts";
 
 const OrdersTable: React.FC = () => {
+    const { t } = useTranslation();
     const [page, setPage] = useState<number>(1);
     const { data: ordersData, error, isLoading } = useGetOrdersQuery({ page, limit: 10 });
 
-    if (isLoading) return <div>Loading...</div>;
-    if (error) return <div>Error fetching orders</div>;
+    if (isLoading) return <div>{t("loading")}</div>;
+    if (error) return <div>{t("errorFetchingOrders")}</div>;
 
     const orders = ordersData?.data || [];
     const total = ordersData?.total || 0;
@@ -34,13 +36,13 @@ const OrdersTable: React.FC = () => {
                 <StyledTable>
                     <TableHeader>
                         <tr>
-                            <th>COLLECTION DATE</th>
-                            <th>COLLECTION TIME</th>
-                            <th>COLLECTION ADDRESS</th>
-                            <th>LUGGAGE, SIZE</th>
-                            <th>CLIENT</th>
-                            <th>STATUS</th>
-                            <th>ROUTE</th>
+                            <th>{t("collectionDate")}</th>
+                            <th>{t("collectionTime")}</th>
+                            <th>{t("collectionAddress")}</th>
+                            <th>{t("luggageSize")}</th>
+                            <th>{t("client")}</th>
+                            <th>{t("status")}</th>
+                            <th>{t("route")}</th>
                         </tr>
                     </TableHeader>
                     <tbody>
@@ -63,7 +65,7 @@ const OrdersTable: React.FC = () => {
                                     {order.luggage && order.luggage.length > 0 ? (
                                         `${order.luggage[0].luggage_size}, ${order.luggage[0].luggage_weight}kg`
                                     ) : (
-                                        'No luggage data'
+                                        t("noLuggageData")
                                     )}
                                 </Paragraph>
                             </TableCell>
@@ -81,19 +83,19 @@ const OrdersTable: React.FC = () => {
                                         </Tooltip>
                                     </TooltipContainer>
                                 ) : (
-                                    'No customer data'
+                                    t("noCustomerData")
                                 )}
                             </TableCell>
                             <TableCell>
                                 <Paragraph>
                                     <StatusBadge status={order.status as OrderStatus}>
-                                        {order.status}
+                                        {t(`orderStatus.${order.status}`, { defaultValue: order.status })}
                                     </StatusBadge>
                                 </Paragraph>
                             </TableCell>
                             <TableCell>
                                 <Paragraph>
-                                    {order.route ? order.route.id : 'No route'}
+                                    {order.route ? order.route.id : t("noRoute")}
                                 </Paragraph>
                             </TableCell>
                         </TableRow>

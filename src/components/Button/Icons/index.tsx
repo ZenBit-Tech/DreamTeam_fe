@@ -6,7 +6,7 @@ import ForwardIcon from '@/assets/images/icons/ForwardIcon.png';
 import DeleteIcon from '@/assets/images/icons/DeleteIcon.png';
 import SwapIcon from '@/assets/images/icons/SwapIcon.png';
 import CloseIcon from '@/assets/images/icons/CloseIcon.png';
-import { IconType } from '@/assets/styles/types';
+import { IconType } from '@/types.ts';
 import { SIZES } from '@/assets/styles/constants/sizes';
 
 interface IconSetProps {

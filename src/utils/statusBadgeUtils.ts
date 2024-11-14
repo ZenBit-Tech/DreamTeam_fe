@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import {OrderStatus, statusColors} from "@/assets/styles/types.ts";
+import {OrderStatus, statusColors} from "@/types.ts";
 import {COLORS} from "@/assets/styles/constants/colors.ts";
 
 export const StatusBadge = styled.span<{ status: OrderStatus }>`
