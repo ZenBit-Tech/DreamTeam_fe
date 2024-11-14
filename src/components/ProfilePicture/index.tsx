@@ -1,6 +1,7 @@
 import { StyledProfilePicture } from './styles';
 
-import { BodyBase } from '@/assets/styles/typography';
+import { BodyBase, BodyBaseLarge } from '@/assets/styles/typography';
+import { getInitials } from '@/utils/stringUtils';
 
 export enum ProfilePicureType {
   Small = '38px',
@@ -17,16 +18,13 @@ export const ProfilePicture = ({
   name,
   type = ProfilePicureType.Medium,
 }: ProfilePictureProps): React.ReactElement => {
-  const initials = name
-    .split(' ')
-    .map((arr) => arr[0].toLocaleUpperCase())
-    .join('');
+  const initials = getInitials(name);
   return (
     <StyledProfilePicture $pictureType={type}>
       {type === ProfilePicureType.Small ? (
         <BodyBase>{initials}</BodyBase>
       ) : (
-        initials
+        <BodyBaseLarge>{initials}</BodyBaseLarge>
       )}
     </StyledProfilePicture>
   );
