@@ -13,7 +13,7 @@ export default function MainPage(): ReactElement {
   return (
     <div>
       {t('example')} {count}
-      <button type="submit" onClick={() => dispatch(increment())}>
+      <button type='submit' onClick={() => dispatch(increment())}>
         {t('buttonExample')}
       </button>
       <Button />

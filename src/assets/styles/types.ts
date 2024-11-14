@@ -1,8 +1,10 @@
 export enum IconType {
-    Add = 'Add',
-    Edit = 'Edit',
-    Forward = 'Forward',
-    Delete = 'Delete',
-    Swap = 'Swap',
-    Close = 'Close'
+  Add = 'Add',
+  AddWhite = 'AddWhite',
+  Edit = 'Edit',
+  Forward = 'Forward',
+  Delete = 'Delete',
+  Search = 'Search',
+  Swap = 'Swap',
+  Close = 'Close',
 }
