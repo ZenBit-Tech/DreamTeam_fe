@@ -59,6 +59,16 @@ export const Paragraph = styled(Typography)({
   textAlign: "left",
 });
 
+export const ParagraphSmall = styled(Typography)({
+  fontFamily: FONTS.PUBLIC_SANS,
+  fontWeight: 400,
+  fontSize: SIZES.paragraph,
+  lineHeight: "13px",
+  textAlign: "left",
+  color: COLORS.paragraph,
+  opacity: 0.6
+});
+
 export const Subheading = styled(Typography)({
   fontFamily: FONTS.INTER,
   fontWeight: 400,

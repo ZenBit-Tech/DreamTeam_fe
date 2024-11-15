@@ -1,11 +1,7 @@
 import { createBrowserRouter } from 'react-router-dom';
 
-import { SignInPage } from '@/pages/SignInPage';
-import { SuperAdminPage } from '@/pages/SuperAdminPage';
+import MainPage from '@/pages/MainPage.tsx';
 
-const router = createBrowserRouter([
-  { path: '/', element: <SignInPage /> },
-  { path: '/superadmin', element: <SuperAdminPage /> },
-]);
+const router = createBrowserRouter([{ path: '', element: <MainPage /> }]);
 
 export default router;
