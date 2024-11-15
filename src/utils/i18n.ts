@@ -16,6 +16,7 @@ const resources = {
       noLuggageData: "No luggage data",
       noCustomerData: "No customer data",
       noRoute: "No route",
+      orderTime:"14-16",
       orderStatus: {
         COMPLETED: "Completed",
         FAILED: "Failed",
@@ -51,6 +52,7 @@ const resources = {
       noLuggageData: "Aucune donnée de bagages",
       noCustomerData: "Aucune donnée client",
       noRoute: "Pas d'itinéraire",
+      orderTime:"14-16",
       orderStatus: {
         COMPLETED: "Terminé",
         FAILED: "Échoué",

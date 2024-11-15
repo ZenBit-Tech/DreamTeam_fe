@@ -9,7 +9,6 @@ import {
     TableCell,
 } from "./styles";
 import { NameBaige } from "@/components/Baige/NameBaige.tsx";
-import { formatCollectionTime } from "@/utils/timeUtils.ts";
 import { Paragraph } from "@/assets/styles/typography.ts";
 import { Tooltip, TooltipContainer } from "@/components/Tooltip/styles.ts";
 import { Pagination } from "@/components/Pagination";
@@ -52,7 +51,7 @@ const OrdersTable: React.FC = () => {
                                 <Paragraph>{new Date(order.collection_date).toLocaleDateString()}</Paragraph>
                             </TableCell>
                             <TableCell>
-                                <Paragraph>{formatCollectionTime(order.collection_date)}</Paragraph>
+                                <Paragraph>{t("orderTime")}</Paragraph>
                             </TableCell>
                             <TableCell>
                                 <TooltipContainer>
