@@ -36,6 +36,12 @@ const resources = {
         to: "to",
         from: "from",
       },
+      companyList: 'Company List',
+      addNewCompany: 'Add New Company',
+      companyName: 'Company Name',
+      actions: 'Actions',
+      companiesShown:
+        'Showing {{startIndex}} to {{endIndex}} of {{totalCompanies}} companies',
     },
   },
   fr: {
@@ -72,6 +78,12 @@ const resources = {
         to: "à",
         from: "de",
       },
+      companyList: 'Liste Des Entreprises',
+      addNewCompany: 'Ajouter une nouvelle entreprise',
+      companyName: "Nom de l'entreprise",
+      actions: 'Actes',
+      companiesShown:
+        'Affichage de {{startIndex}} à {{endIndex}} sur {{totalCompanies}} entreprises',
     },
   },
 };
