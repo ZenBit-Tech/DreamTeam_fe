@@ -13,6 +13,12 @@ const resources = {
       actions: 'Actions',
       companiesShown:
         'Showing {{startIndex}} to {{endIndex}} of {{totalCompanies}} companies',
+      company: 'Company',
+      organizationName: 'Organization Name',
+      clientName: 'Client Name',
+      submit: 'Submit',
+      cancel: 'Cancel',
+      delete: 'Delete',
     },
   },
   fr: {
@@ -27,6 +33,12 @@ const resources = {
       actions: 'Actes',
       companiesShown:
         'Affichage de {{startIndex}} à {{endIndex}} sur {{totalCompanies}} entreprises',
+      company: 'Entreprise',
+      organizationName: "Nom de l'organisation",
+      clientName: 'Nom du client',
+      submit: 'Soumettre',
+      cancel: 'Annuler',
+      delete: 'Supprimer',
     },
   },
 };

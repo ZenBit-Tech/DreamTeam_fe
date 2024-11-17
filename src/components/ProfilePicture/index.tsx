@@ -29,7 +29,3 @@ export const ProfilePicture = ({
     </StyledProfilePicture>
   );
 };
-
-ProfilePicture.defaultProps = {
-  type: ProfilePicureType.Medium,
-};

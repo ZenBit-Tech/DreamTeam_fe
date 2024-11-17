@@ -54,4 +54,6 @@ export const COLORS = {
 
   disabled: '#D0D5DD',
   signInContainer: '#F8F7FA',
+
+  popupBackground: 'rgba(82, 73, 170, 0.19)',
 };

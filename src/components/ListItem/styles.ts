@@ -32,3 +32,6 @@ export const StyledIcons = styled.div`
   display: flex;
   gap: 8px;
 `;
+export const IconWrapper = styled.div`
+  cursor: pointer;
+`;

@@ -6,6 +6,7 @@ import { BodyBase, BodyBaseLarge, BodySmall } from '@/assets/styles/typography';
 export const buttonVariants = {
   primary: 'primary',
   secondary: 'secondary',
+  secondaryOutline: 'secondaryOutline',
   outline: 'outline',
   disabled: 'disabled',
   glowing: 'glowing',

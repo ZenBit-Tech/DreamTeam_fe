@@ -22,6 +22,7 @@ export const ButtonStyled = styled.button<{
 
     background-color: ${({ $variant, $buttonColor }) =>
             $variant === buttonVariants.outline ||
+            $variant === buttonVariants.secondaryOutline ||
             $variant === buttonVariants.dotted ||
             $variant === buttonVariants.glowing
                     ? "transparent"
@@ -29,6 +30,7 @@ export const ButtonStyled = styled.button<{
 
     color: ${({ $variant, $buttonColor }) =>
             $variant === buttonVariants.outline ||
+            $variant === buttonVariants.secondaryOutline ||
             $variant === buttonVariants.dotted ||
             $variant === buttonVariants.glowing
                     ? buttonColors[$buttonColor as ButtonColorType] || COLORS.accent500
