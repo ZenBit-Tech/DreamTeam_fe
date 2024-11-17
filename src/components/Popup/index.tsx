@@ -12,7 +12,7 @@ import { CloseButton } from './styles';
 
 import { COLORS } from '@/assets/styles/constants/colors';
 import { IconType } from '@/assets/styles/types';
-import { Heading } from '@/assets/styles/typography';
+import { BodyBase, Heading } from '@/assets/styles/typography';
 import { IconSet } from '@/components/Button/Icons';
 import { UniversalButton } from '@/components/Button/UniversalButton';
 
@@ -21,13 +21,15 @@ interface PopupProps {
   modalOpen: boolean;
   handleCloseModal: () => void;
   handleSubmit: UseFormHandleSubmit<FieldValues, undefined>;
-  children: React.ReactNode[];
+  children?: React.ReactNode[];
+  isDelete?: boolean;
 }
 
 export const Popup = ({
   popupName,
   modalOpen,
   children,
+  isDelete = false,
   handleCloseModal,
   handleSubmit,
 }: PopupProps): React.ReactNode => {
@@ -58,9 +60,20 @@ export const Popup = ({
         <Heading>{popupName}</Heading>
       </DialogTitle>
       <DialogContent
-        sx={{ display: 'flex', flexDirection: 'column', gap: '4px' }}
+        sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '4px',
+        }}
       >
-        {...children}
+        {children !== undefined ? children : ''}
+        {isDelete && (
+          <BodyBase
+            sx={{ color: COLORS.onSecondaryContainer, margin: '24px 0px' }}
+          >
+            {t('deleteWarning')}
+          </BodyBase>
+        )}
 
         <DialogActions sx={{ padding: '4px 0px' }}>
           <UniversalButton
@@ -70,7 +83,13 @@ export const Popup = ({
           >
             {t('cancel')}
           </UniversalButton>
-          <UniversalButton size='mediumSmall'>{t('submit')}</UniversalButton>
+          {isDelete ? (
+            <UniversalButton size='mediumSmall' variant='error'>
+              {t('delete')}
+            </UniversalButton>
+          ) : (
+            <UniversalButton size='mediumSmall'>{t('submit')}</UniversalButton>
+          )}
         </DialogActions>
       </DialogContent>
       <CloseButton onClick={handleCloseModal}>

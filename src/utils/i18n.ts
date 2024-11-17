@@ -19,6 +19,7 @@ const resources = {
       submit: 'Submit',
       cancel: 'Cancel',
       delete: 'Delete',
+      deleteWarning: 'Those changes cannot be undone. Are you sure?',
     },
   },
   fr: {
@@ -39,6 +40,8 @@ const resources = {
       submit: 'Soumettre',
       cancel: 'Annuler',
       delete: 'Supprimer',
+      deleteWarning:
+        'Ces modifications ne peuvent pas être annulées. Êtes-vous sûr ?',
     },
   },
 };
