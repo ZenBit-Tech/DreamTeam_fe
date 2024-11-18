@@ -31,3 +31,4 @@
 - [ ] no text in the components, use i18n approach, even if you have only one language for now
 - [ ] inline styles prohibited
 - [ ] import should be absolute. instead of ../../../components/myComponent should be components/myComponent
+- [ ] attach a screenshot if PR has visual changes

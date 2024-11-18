@@ -21,6 +21,7 @@ import { IconSet } from '@/components/Button/Icons';
 import { UniversalButton } from '@/components/Button/UniversalButton';
 import { CompanyPagination } from '@/components/CompanyPagination';
 import { DreamTeamLogo } from '@/components/DreamTeamLogo';
+import { CompanyForm, CompanyFormTypes } from '@/components/Forms/CompanyForm';
 import { SearchBar } from '@/components/Inputs/SearchBar';
 import { ListItem } from '@/components/ListItem';
 import { ProfilePicture } from '@/components/ProfilePicture';
@@ -41,6 +42,8 @@ export const SuperAdminPage = (): React.ReactElement => {
     handleSelectChange,
   };
 
+  const [addModalOpen, setAddModal] = React.useState(false);
+  const [editModalOpen, setEditModal] = React.useState(false);
   return (
     <SuperAdminContainer>
       <SuperAdminHeader>
@@ -53,10 +56,11 @@ export const SuperAdminPage = (): React.ReactElement => {
           <CompanyListHeader>
             <SearchBar />
             <UniversalButton
+              onClick={() => setAddModal(true)}
               size='mediumSmall'
               icon={<IconSet iconType={IconType.AddWhite} />}
             >
-              <BodyBase>{t('addNewCompany')}</BodyBase>
+              {t('addNewCompany')}
             </UniversalButton>
           </CompanyListHeader>
           <CompanyListBody>
@@ -69,7 +73,11 @@ export const SuperAdminPage = (): React.ReactElement => {
               <BodyBase>{t('actions')}</BodyBase>
             </CompanyListFilter>
             {companiesData.map((company) => (
-              <ListItem item={company} />
+              <ListItem
+                key={company.id}
+                item={company}
+                setModal={() => setEditModal(true)}
+              />
             ))}
           </CompanyListBody>
           <CompanyListFooter>
@@ -77,6 +85,16 @@ export const SuperAdminPage = (): React.ReactElement => {
           </CompanyListFooter>
         </CompanyListContent>
       </SuperAdminBody>
+      <CompanyForm
+        modalOpen={addModalOpen}
+        closeModal={() => setAddModal(false)}
+        type={CompanyFormTypes.Add}
+      />
+      <CompanyForm
+        modalOpen={editModalOpen}
+        closeModal={() => setEditModal(false)}
+        type={CompanyFormTypes.Edit}
+      />
     </SuperAdminContainer>
   );
 };

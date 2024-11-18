@@ -7,4 +7,5 @@ export enum IconType {
   Search = 'Search',
   Swap = 'Swap',
   Close = 'Close',
+  CloseBlack = 'CloseBlack',
 }

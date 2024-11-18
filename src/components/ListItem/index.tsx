@@ -1,5 +1,6 @@
 import {
   ContactInfo,
+  IconWrapper,
   ListItemWrapper,
   ProfileContacts,
   StyledEmail,
@@ -17,9 +18,13 @@ interface ListItemProps {
     organization_name: string;
     email: string;
   };
+  setModal: () => void;
 }
 
-export const ListItem = ({ item }: ListItemProps): React.ReactNode => {
+export const ListItem = ({
+  item,
+  setModal,
+}: ListItemProps): React.ReactNode => {
   return (
     <ListItemWrapper>
       <ProfileContacts>
@@ -37,8 +42,12 @@ export const ListItem = ({ item }: ListItemProps): React.ReactNode => {
         </ContactInfo>
       </ProfileContacts>
       <StyledIcons>
-        <IconSet iconType={IconType.Edit} />
-        <IconSet iconType={IconType.Delete} />
+        <IconWrapper onClick={setModal}>
+          <IconSet iconType={IconType.Edit} />
+        </IconWrapper>
+        <IconWrapper>
+          <IconSet iconType={IconType.Delete} />
+        </IconWrapper>
       </StyledIcons>
     </ListItemWrapper>
   );

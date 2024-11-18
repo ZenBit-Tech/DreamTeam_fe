@@ -3,6 +3,7 @@ import React from 'react';
 
 import AddIcon from '@/assets/images/icons/AddIcon.png';
 import AddWhiteIcon from '@/assets/images/icons/AddWhiteIcon.png';
+import CloseBlackIcon from '@/assets/images/icons/CloseBlackIcon.png';
 import CloseIcon from '@/assets/images/icons/CloseIcon.png';
 import DeleteIcon from '@/assets/images/icons/DeleteIcon.png';
 import EditIcon from '@/assets/images/icons/EditIcon.png';
@@ -27,6 +28,7 @@ const iconComponents = {
   [IconType.Search]: SearchIcon,
   [IconType.Swap]: SwapIcon,
   [IconType.Close]: CloseIcon,
+  [IconType.CloseBlack]: CloseBlackIcon,
 };
 
 export const IconSet: React.FC<IconSetProps> = ({
@@ -36,7 +38,9 @@ export const IconSet: React.FC<IconSetProps> = ({
   const iconPath = iconComponents[iconType];
 
   return (
-    <Box>
+    <Box
+      sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+    >
       <img src={iconPath} width={size} height={size} alt={iconType} />
     </Box>
   );
