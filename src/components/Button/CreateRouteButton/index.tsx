@@ -1,10 +1,13 @@
-import { CreateRouteBtn } from "@/components/Button/CreateRouteButton/styles.ts";
+import {
+  CreateRouteBtn,
+  IconWrapper,
+} from '@/components/Button/CreateRouteButton/styles.ts';
 
-export const CreateRouteButton = () => {
-    return (
-        <CreateRouteBtn>
-            <span style={{ color: "white", marginRight: "10px" , fontSize: "25px"}}>+</span>
-            Create route
-        </CreateRouteBtn>
-    );
+export const CreateRouteButton = (): JSX.Element => {
+  return (
+    <CreateRouteBtn>
+      <IconWrapper>+</IconWrapper>
+      Create route
+    </CreateRouteBtn>
+  );
 };

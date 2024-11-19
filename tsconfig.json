@@ -26,9 +26,19 @@
       "@": ["./src"],
       "@/*": ["./src/*"],
       "@components": ["./src/components"],
-      "@pages": ["./src/pages"],
-    },
+      "@pages": ["./src/pages"]
+    }
   },
-  "include": ["vite.config.ts", ".eslintrc.cjs", "src", "**/*.ts", "**/*.tsx", "**/**/*.ts", "**/**/*.tsx", "**/**/**/*.ts", "**/**/**/*.tsx"],
+  "include": [
+    "vite.config.ts",
+    ".eslintrc.cjs",
+    "src",
+    "**/*.ts",
+    "**/*.tsx",
+    "**/**/*.ts",
+    "**/**/*.tsx",
+    "**/**/**/*.ts",
+    "**/**/**/*.tsx"
+  ],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

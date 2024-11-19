@@ -48,10 +48,10 @@ export type ButtonColors = keyof typeof buttonColors;
 
 export const typographyStyles = {
   small: BodySmall,
-  mediumSmall: BodyBase,
   medium: BodyBase,
   large: BodyBaseLarge,
   huge: BodyBaseLarge,
+  mediumSmall: BodyBase,
 };
 
 export type ButtonProps = {

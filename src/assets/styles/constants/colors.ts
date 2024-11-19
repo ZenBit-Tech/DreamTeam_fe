@@ -3,6 +3,7 @@ export const COLORS = {
   onPrimary: '#FFFFFF',
   accent100: '#D4D0FA',
   accent200: '#BFB9F8',
+  accent300: '#A199F5',
   accent600: '#695EDA',
   accent50: '#F1F0FE',
   accent900: '#302B65',
@@ -26,6 +27,8 @@ export const COLORS = {
   tertiaryFixedDim: '#EFB8C8',
   onTertiaryFixed: '#31111D',
   onTertiaryFixedVariant: '#633B48',
+
+  success: '#00A36C',
 
   error: '#B3261E',
   onError: '#FFFFFF',

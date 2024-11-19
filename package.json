@@ -22,6 +22,7 @@
     "@reduxjs/toolkit": "^2.2.5",
     "@types/react-redux": "^7.1.33",
     "@types/react-router-dom": "^5.3.3",
+    "dreamteam-fe": "file:",
     "emoji-mart": "^5.6.0",
     "i18next": "^23.16.4",
     "i18next-browser-languagedetector": "^8.0.0",
@@ -38,6 +39,7 @@
     "url": "^0.11.4"
   },
   "devDependencies": {
+    "@types/node": "^22.9.0",
     "@types/react": "^18.2.66",
     "@types/react-dom": "^18.2.22",
     "@typescript-eslint/eslint-plugin": "^7.2.0",
