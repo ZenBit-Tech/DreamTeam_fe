@@ -19,11 +19,13 @@ interface ListItemProps {
     email: string;
   };
   setModal: () => void;
+  setDeleteModal: () => void;
 }
 
 export const ListItem = ({
   item,
   setModal,
+  setDeleteModal,
 }: ListItemProps): React.ReactNode => {
   return (
     <ListItemWrapper>
@@ -45,7 +47,7 @@ export const ListItem = ({
         <IconWrapper onClick={setModal}>
           <IconSet iconType={IconType.Edit} />
         </IconWrapper>
-        <IconWrapper>
+        <IconWrapper onClick={setDeleteModal}>
           <IconSet iconType={IconType.Delete} />
         </IconWrapper>
       </StyledIcons>
