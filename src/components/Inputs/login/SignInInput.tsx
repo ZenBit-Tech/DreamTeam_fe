@@ -1,11 +1,13 @@
-import {StyledLoginInput} from "@/components/Inputs/login/styles.tsx";
-import {LabelSM} from "@/assets/styles/typography.ts";
+import { LabelSM } from '@/assets/styles/typography.ts';
+import { StyledLoginInput } from '@/components/Inputs/SignIn/styles';
 
-const SignInInput = () => {
-    return <div>
-        <LabelSM>Email</LabelSM>
-        <StyledLoginInput type="email" placeholder="john.doe" />
+const SignInInput = (): JSX.Element => {
+  return (
+    <div>
+      <LabelSM>Email</LabelSM>
+      <StyledLoginInput type='email' placeholder='john.doe' />
     </div>
+  );
 };
 
 export default SignInInput;

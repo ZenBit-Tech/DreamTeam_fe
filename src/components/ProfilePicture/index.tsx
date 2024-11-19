@@ -1,27 +1,22 @@
 import { StyledProfilePicture } from './styles';
 
+import { ProfilePictureType } from '@/assets/styles/constants/sizes';
 import { BodyBase, BodyBaseLarge } from '@/assets/styles/typography';
 import { getInitials } from '@/utils/stringUtils';
 
-export enum ProfilePicureType {
-  Small = '38px',
-  Medium = '50px',
-  Large = '64px',
-}
-
 interface ProfilePictureProps {
   name: string;
-  type?: ProfilePicureType;
+  type?: ProfilePictureType;
 }
 
 export const ProfilePicture = ({
   name,
-  type = ProfilePicureType.Medium,
+  type = ProfilePictureType.Medium,
 }: ProfilePictureProps): React.ReactElement => {
   const initials = getInitials(name);
   return (
     <StyledProfilePicture $pictureType={type}>
-      {type === ProfilePicureType.Small ? (
+      {type === ProfilePictureType.Small ? (
         <BodyBase>{initials}</BodyBase>
       ) : (
         <BodyBaseLarge>{initials}</BodyBaseLarge>
