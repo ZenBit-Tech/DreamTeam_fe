@@ -30,6 +30,7 @@ import { CompanyListTitle } from '@/components/Titles/CompanyList';
 export const SuperAdminPage = (): React.ReactElement => {
   const { selectedPage, selectedOption, handlePageChange, handleSelectChange } =
     usePagination();
+
   const pageData = { page: selectedPage, rowsPerPage: selectedOption };
   const { companiesData, totalCompanies, numberOfPages, startIndex, endIndex } =
     useCompanies(pageData);
