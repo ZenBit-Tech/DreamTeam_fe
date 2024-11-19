@@ -19,6 +19,7 @@ const resources = {
       submit: 'Submit',
       cancel: 'Cancel',
       delete: 'Delete',
+      deleteWarning: 'Those changes cannot be undone. Are you sure?',
       termsAndPrivacy:
         'By continuing, you agree to our <terms>Terms and Conditions</terms> & <privacy>Privacy Policy</privacy>',
       emailHelperText: 'Please enter valid email',
@@ -47,6 +48,8 @@ const resources = {
       submit: 'Soumettre',
       cancel: 'Annuler',
       delete: 'Supprimer',
+      deleteWarning:
+        'Ces modifications ne peuvent pas être annulées. Êtes-vous sûr ?',
       termsAndPrivacy:
         'En continuant, vous acceptez nos <terms>Conditions Générales</terms> & <privacy>Politique de Confidentialité</privacy>',
       emailHelperText: 'Veuillez entrer une adresse e-mail valide',

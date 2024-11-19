@@ -21,6 +21,7 @@ import { IconSet } from '@/components/Button/Icons';
 import { UniversalButton } from '@/components/Button/UniversalButton';
 import { CompanyPagination } from '@/components/CompanyPagination';
 import { DreamTeamLogo } from '@/components/DreamTeamLogo';
+import { CompanyDeleteForm } from '@/components/Forms/CompanyDeleteForm';
 import { CompanyForm, CompanyFormTypes } from '@/components/Forms/CompanyForm';
 import { SearchBar } from '@/components/Inputs/SearchBar';
 import { ListItem } from '@/components/ListItem';
@@ -44,6 +45,7 @@ export const SuperAdminPage = (): React.ReactElement => {
 
   const [addModalOpen, setAddModal] = React.useState(false);
   const [editModalOpen, setEditModal] = React.useState(false);
+  const [deleteModalOpen, setDeleteModal] = React.useState(false);
   return (
     <SuperAdminContainer>
       <SuperAdminHeader>
@@ -77,6 +79,7 @@ export const SuperAdminPage = (): React.ReactElement => {
                 key={company.id}
                 item={company}
                 setModal={() => setEditModal(true)}
+                setDeleteModal={() => setDeleteModal(true)}
               />
             ))}
           </CompanyListBody>
@@ -94,6 +97,10 @@ export const SuperAdminPage = (): React.ReactElement => {
         modalOpen={editModalOpen}
         closeModal={() => setEditModal(false)}
         type={CompanyFormTypes.Edit}
+      />
+      <CompanyDeleteForm
+        modalOpen={deleteModalOpen}
+        closeModal={() => setDeleteModal(false)}
       />
     </SuperAdminContainer>
   );
