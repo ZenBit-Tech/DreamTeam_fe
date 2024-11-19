@@ -1,95 +1,107 @@
-import React from "react";
-import styled, { css } from "styled-components";
+import React from 'react';
+import styled, { css, RuleSet } from 'styled-components';
+
+import { IconWrapper } from './styles';
+
 import {
-    buttonSizes,
-    typographyStyles,
-    buttonVariants,
-    buttonColors,
-    ButtonProps
-} from "@/assets/styles/constants/buttonConstants";
-import { ButtonVariant, ButtonSize } from "@/assets/styles/constants/buttonConstants";
+  buttonSizes,
+  typographyStyles,
+  buttonVariants,
+  buttonColors,
+  ButtonProps,
+  ButtonVariant,
+  ButtonSize,
+} from '@/assets/styles/constants/buttonConstants';
+import { COLORS } from '@/assets/styles/constants/colors';
+import { SIZES } from '@/assets/styles/constants/sizes';
+import { STYLES } from '@/assets/styles/constants/stylesConstants';
 
 const ButtonStyled = styled.button<{
-    $variant?: ButtonVariant;
-    $size?: ButtonSize;
-    $buttonColor?: string;
-    $dotColor?: string;
+  $variant?: ButtonVariant;
+  $size?: ButtonSize;
+  $buttonColor?: string;
+  $dotColor?: string;
 }>`
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0 16px;
-    height: ${({ $size }) => buttonSizes[$size || "medium"]};
-    background-color: ${({ $variant, $buttonColor }) =>
-            $variant === buttonVariants.outline ||
-            $variant === buttonVariants.dotted ||
-            $variant === buttonVariants.glowing
-                    ? "transparent"
-                    : $buttonColor || buttonColors[$variant || "primary"]};
-    color: ${({ $variant, $buttonColor }) =>
-            $variant === buttonVariants.outline ||
-            $variant === buttonVariants.dotted ||
-            $variant === buttonVariants.glowing
-                    ? $buttonColor || buttonColors.primary
-                    : "#fff"};
-    border: ${({ $variant, $buttonColor }) =>
-            $variant === buttonVariants.outline ||
-            $variant === buttonVariants.dotted ||
-            $variant === buttonVariants.glowing
-                    ? `2px solid ${$buttonColor || buttonColors.primary}`
-                    : "none"};
-    border-radius: 8px;
-    font-weight: 500;
-    cursor: ${({ $variant }) => ($variant === buttonVariants.disabled ? "not-allowed" : "pointer")};
-    opacity: ${({ $variant }) => ($variant === buttonVariants.disabled ? 0.6 : 1)};
-    transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 ${STYLES.paddingHorizontal};
+  height: ${({ $size }): string => buttonSizes[$size || 'medium']};
+  background-color: ${({ $variant, $buttonColor }): string =>
+    $variant === buttonVariants.outline ||
+    $variant === buttonVariants.dotted ||
+    $variant === buttonVariants.glowing
+      ? 'transparent'
+      : $buttonColor || buttonColors[$variant || 'primary']};
+  color: ${({ $variant, $buttonColor }): string =>
+    $variant === buttonVariants.outline ||
+    $variant === buttonVariants.dotted ||
+    $variant === buttonVariants.glowing
+      ? $buttonColor || buttonColors.primary
+      : COLORS.onPrimary};
+  border: ${({ $variant, $buttonColor }): string =>
+    $variant === buttonVariants.outline ||
+    $variant === buttonVariants.dotted ||
+    $variant === buttonVariants.glowing
+      ? `2px solid ${$buttonColor || buttonColors.primary}`
+      : 'none'};
+  border-radius: ${STYLES.borderRadius};
+  font-weight: 500;
+  cursor: ${({ $variant }): string =>
+    $variant === buttonVariants.disabled ? 'not-allowed' : 'pointer'};
+  opacity: ${({ $variant }): number =>
+    $variant === buttonVariants.disabled ? STYLES.opacityDisabled : 1};
+  transition: all ${STYLES.transitionDuration} ease;
 
-    &:hover {
-        opacity: ${({ $variant }) => ($variant === buttonVariants.disabled ? 0.6 : 0.8)};
-    }
+  &:hover {
+    opacity: ${({ $variant }): number =>
+      $variant === buttonVariants.disabled
+        ? STYLES.opacityDisabled
+        : STYLES.opacityHover};
+  }
 
-    ${({ $variant, $dotColor }) =>
-            $variant === buttonVariants.dotted &&
-            css`
-                gap: 16px;
-                &::before {
-                    content: "•";
-                    font-size: 20px;
-                    color: ${$dotColor || buttonColors.primary};
-                }
-            `}
+  ${({ $variant, $dotColor }): false | RuleSet =>
+    $variant === buttonVariants.dotted &&
+    css`
+      gap: ${STYLES.paddingHorizontal};
+      &::before {
+        content: '•';
+        font-size: ${SIZES.fontSizeDot};
+        color: ${$dotColor || buttonColors.primary};
+      }
+    `}
 
-    ${({ $variant }) =>
-            $variant === buttonVariants.glowing &&
-            css`
-                outline: 3px solid ${buttonColors.glowingBorder};
-                outline-offset: 0px;
-            `}
+  ${({ $variant }): false | RuleSet =>
+    $variant === buttonVariants.glowing &&
+    css`
+      outline: ${STYLES.glowingOutlineWidth} solid ${buttonColors.glowingBorder};
+      outline-offset: 0;
+    `}
 `;
 
 export const UniversalButton: React.FC<ButtonProps> = ({
-                                                           variant = "primary",
-                                                           size = "medium",
-                                                           icon,
-                                                           iconRight,
-                                                           buttonColor,
-                                                           dotColor,
-                                                           onClick,
-                                                           children,
-                                                       }) => {
-    const TypographyComponent = typographyStyles[size || "medium"];
+  variant = 'primary',
+  size = 'medium',
+  icon,
+  iconRight,
+  buttonColor,
+  dotColor,
+  onClick,
+  children,
+}) => {
+  const TypographyComponent = typographyStyles[size || 'medium'];
 
-    return (
-        <ButtonStyled
-            $variant={variant}
-            $size={size}
-            $buttonColor={buttonColor}
-            $dotColor={dotColor}
-            onClick={onClick}
-        >
-            {icon && <span style={{ marginRight: "8px" }}>{icon}</span>}
-            <TypographyComponent>{children}</TypographyComponent>
-            {iconRight && <span style={{ marginLeft: "8px" }}>{iconRight}</span>}
-        </ButtonStyled>
-    );
+  return (
+    <ButtonStyled
+      $variant={variant}
+      $size={size}
+      $buttonColor={buttonColor}
+      $dotColor={dotColor}
+      onClick={onClick}
+    >
+      {icon && <IconWrapper position='left'>{icon}</IconWrapper>}
+      <TypographyComponent>{children}</TypographyComponent>
+      {iconRight && <IconWrapper position='right'>{iconRight}</IconWrapper>}
+    </ButtonStyled>
+  );
 };

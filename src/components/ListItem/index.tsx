@@ -8,10 +8,11 @@ import {
   StyledItemName,
 } from './styles';
 
+import { ProfilePictureType } from '@/assets/styles/constants/sizes';
 import { IconType } from '@/assets/styles/types';
 import { BodySmall, BodyStrong } from '@/assets/styles/typography';
 import { IconSet } from '@/components/Button/Icons';
-import { ProfilePicture, ProfilePicureType } from '@/components/ProfilePicture';
+import { ProfilePicture } from '@/components/ProfilePicture';
 
 interface ListItemProps {
   item: {
@@ -32,7 +33,7 @@ export const ListItem = ({
       <ProfileContacts>
         <ProfilePicture
           name={item.organization_name}
-          type={ProfilePicureType.Small}
+          type={ProfilePictureType.Small}
         />
         <ContactInfo>
           <StyledItemName>

@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 
 import Button from '@/components/Button';
 import FormExample from '@/components/FormExample';
-import { increment } from '@/redux/exampleSlice';
+import { increment } from '@/redux/example.slice';
 import { useAppSelector, useAppDispatch } from '@/redux/hooks';
 
 export default function MainPage(): ReactElement {

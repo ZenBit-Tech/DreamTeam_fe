@@ -4,7 +4,7 @@ import { initReactI18next } from 'react-i18next';
 const resources = {
   en: {
     translation: {
-      welcomeMessage: 'Welcome to Smartporters! 👋',
+      welcomeMessage: 'Welcome to Dreamteam!',
       signInPrompt: 'Please sign in to your account and start the delivery',
       emailLabel: 'Email',
       companyList: 'Company List',
@@ -20,11 +20,19 @@ const resources = {
       cancel: 'Cancel',
       delete: 'Delete',
       deleteWarning: 'Those changes cannot be undone. Are you sure?',
+      termsAndPrivacy:
+        'By continuing, you agree to our <terms>Terms and Conditions</terms> & <privacy>Privacy Policy</privacy>',
+      emailHelperText: 'Please enter valid email',
+      buttonLoading: 'Loading...',
+      signInButton: 'Sign in',
+      successLoginMessage: 'Login link sent to your email',
+      userNotFoundError: 'Please enter valid credentials',
+      errorMessage: 'Oops, something went wrong, please try again later',
     },
   },
   fr: {
     translation: {
-      welcomeMessage: 'Bienvenue chez Smartporters! 👋',
+      welcomeMessage: 'Bienvenue sur Dreamteam!',
       signInPrompt:
         'Veuillez vous connecter à votre compte et commencer la livraison',
       emailLabel: 'E-mail',
@@ -42,6 +50,16 @@ const resources = {
       delete: 'Supprimer',
       deleteWarning:
         'Ces modifications ne peuvent pas être annulées. Êtes-vous sûr ?',
+      termsAndPrivacy:
+        'En continuant, vous acceptez nos <terms>Conditions Générales</terms> & <privacy>Politique de Confidentialité</privacy>',
+      emailHelperText: 'Veuillez entrer une adresse e-mail valide',
+      buttonLoading: 'Chargement...',
+      signInButton: 'Se connecter',
+      successLoginMessage: 'Lien de connexion envoyé à votre email',
+      userNotFoundError:
+        "Veuillez saisir des informations d'identification valides",
+      errorMessage:
+        "Oups, quelque chose s'est mal passé, veuillez réessayer plus tard",
     },
   },
 };

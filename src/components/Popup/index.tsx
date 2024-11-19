@@ -51,7 +51,7 @@ export const Popup = ({
           borderRadius: '12px',
           overflow: 'unset',
         },
-        onSubmit: handleSubmit((data) => {
+        onSubmit: handleSubmit(() => {
           handleCloseModal();
         }),
       }}

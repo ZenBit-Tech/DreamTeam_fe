@@ -16,7 +16,6 @@ import { IconType } from '@/assets/styles/types';
 interface IconSetProps {
   iconType: IconType;
   size?: number;
-  color?: string;
 }
 
 const iconComponents = {
