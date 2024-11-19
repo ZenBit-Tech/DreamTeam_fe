@@ -11,7 +11,6 @@ export const COLORS = {
 
   secondary: '#625B71',
   onSecondary: '#FFFFFF',
-  primaryContainer: '#EADDFF',
   secondaryContainer: '#E8DEF8',
   onSecondaryContainer: '#4A4459',
   secondaryFixed: '#E8DEF8',
@@ -56,4 +55,6 @@ export const COLORS = {
   signInContainer: '#F8F7FA',
 
   popupBackground: 'rgba(82, 73, 170, 0.19)',
+  mainText: '#79747E',
+  primaryContainer: '#E8DEF8',
 };

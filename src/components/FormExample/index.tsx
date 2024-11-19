@@ -16,12 +16,12 @@ export default function Form(): React.ReactElement {
 
   return (
     <ExampleStyledForm onSubmit={handleSubmit(onSubmit)}>
-      <input defaultValue="test" {...register('example')} />
+      <input defaultValue='test' {...register('example')} />
 
       <input {...register('exampleRequired', { required: true })} />
       {errors.exampleRequired && <span>{t('inputErrorExample')}</span>}
 
-      <input type="submit" />
+      <input type='submit' />
     </ExampleStyledForm>
   );
 }
