@@ -27,6 +27,8 @@ const resources = {
       successLoginMessage: 'Login link sent to your email',
       userNotFoundError: 'Please enter valid credentials',
       errorMessage: 'Oops, something went wrong, please try again later',
+      search: 'Search',
+      loading: 'Loading...',
     },
   },
   fr: {
@@ -57,6 +59,8 @@ const resources = {
         "Veuillez saisir des informations d'identification valides",
       errorMessage:
         "Oups, quelque chose s'est mal passé, veuillez réessayer plus tard",
+      search: 'recherche',
+      loading: 'Loading...',
     },
   },
 };

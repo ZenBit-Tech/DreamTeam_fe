@@ -24,26 +24,33 @@ import { DreamTeamLogo } from '@/components/DreamTeamLogo';
 import { CompanyForm, CompanyFormTypes } from '@/components/Forms/CompanyForm';
 import { SearchBar } from '@/components/Inputs/SearchBar';
 import { ListItem } from '@/components/ListItem';
+import { IconWrapper } from '@/components/ListItem/styles';
 import { ProfilePicture } from '@/components/ProfilePicture';
+import { SignInPopup } from '@/components/SignInPopup';
 import { CompanyListTitle } from '@/components/Titles/CompanyList';
 
 export const SuperAdminPage = (): React.ReactElement => {
   const { selectedPage, selectedOption, handlePageChange, handleSelectChange } =
     usePagination();
-  const pageData = { page: selectedPage, rowsPerPage: selectedOption };
-  const { companiesData, totalCompanies, numberOfPages, startIndex, endIndex } =
-    useCompanies(pageData);
-  const paginationProps = {
-    totalCompanies,
-    numberOfPages,
+  const {
     startIndex,
     endIndex,
-    handlePageChange,
-    handleSelectChange,
-  };
+    addModalOpen,
+    editModalOpen,
+    data,
+    error,
+    isLoading,
+    totalCompanies,
+    numberOfPages,
+    setAddModalOpen,
+    setEditModalOpen,
+    handleSortToggle,
+    handleSearchChange,
+  } = useCompanies({
+    page: selectedPage,
+    rowsPerPage: selectedOption,
+  });
 
-  const [addModalOpen, setAddModal] = React.useState(false);
-  const [editModalOpen, setEditModal] = React.useState(false);
   return (
     <SuperAdminContainer>
       <SuperAdminHeader>
@@ -54,9 +61,9 @@ export const SuperAdminPage = (): React.ReactElement => {
         <CompanyListTitle />
         <CompanyListContent>
           <CompanyListHeader>
-            <SearchBar />
+            <SearchBar onChange={handleSearchChange} />
             <UniversalButton
-              onClick={() => setAddModal(true)}
+              onClick={() => setAddModalOpen(true)}
               size='mediumSmall'
               icon={<IconSet iconType={IconType.AddWhite} />}
             >
@@ -67,34 +74,51 @@ export const SuperAdminPage = (): React.ReactElement => {
             <CompanyListFilter>
               <CompanyName>
                 <BodyBase>{t('companyName')}</BodyBase>
-                <IconSet iconType={IconType.Swap} />
+                <IconWrapper onClick={handleSortToggle}>
+                  <IconSet iconType={IconType.Swap} />
+                </IconWrapper>
               </CompanyName>
 
               <BodyBase>{t('actions')}</BodyBase>
             </CompanyListFilter>
-            {companiesData.map((company) => (
-              <ListItem
-                key={company.id}
-                item={company}
-                setModal={() => setEditModal(true)}
-              />
-            ))}
+            {isLoading ? (
+              <h3>{t('loading')}</h3>
+            ) : (
+              data &&
+              data.data.map((company) => (
+                <ListItem
+                  key={company.id}
+                  item={company}
+                  setModal={() => setEditModalOpen(true)}
+                />
+              ))
+            )}
           </CompanyListBody>
           <CompanyListFooter>
-            <CompanyPagination paginationProps={paginationProps} />
+            <CompanyPagination
+              totalCompanies={totalCompanies}
+              numberOfPages={numberOfPages}
+              startIndex={startIndex}
+              endIndex={endIndex}
+              handlePageChange={handlePageChange}
+              handleSelectChange={handleSelectChange}
+            />
           </CompanyListFooter>
         </CompanyListContent>
       </SuperAdminBody>
       <CompanyForm
         modalOpen={addModalOpen}
-        closeModal={() => setAddModal(false)}
+        closeModal={() => setAddModalOpen(false)}
         type={CompanyFormTypes.Add}
       />
       <CompanyForm
         modalOpen={editModalOpen}
-        closeModal={() => setEditModal(false)}
+        closeModal={() => setEditModalOpen(false)}
         type={CompanyFormTypes.Edit}
       />
+      {error && (
+        <SignInPopup type='error' text='Failed to load companies data' />
+      )}
     </SuperAdminContainer>
   );
 };
