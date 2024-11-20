@@ -29,6 +29,7 @@ const resources = {
       errorMessage: 'Oops, something went wrong, please try again later',
       search: 'Search',
       loading: 'Loading...',
+      faliedToLoad: 'Failed to load companies data',
     },
   },
   fr: {
@@ -60,7 +61,8 @@ const resources = {
       errorMessage:
         "Oups, quelque chose s'est mal passé, veuillez réessayer plus tard",
       search: 'recherche',
-      loading: 'Loading...',
+      loading: 'Chargement...',
+      faliedToLoad: 'Impossible de charger les données des entreprises',
     },
   },
 };

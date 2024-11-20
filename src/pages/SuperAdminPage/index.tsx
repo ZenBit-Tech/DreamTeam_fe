@@ -19,7 +19,6 @@ import { IconType } from '@/assets/styles/types';
 import { BodyBase } from '@/assets/styles/typography';
 import { IconSet } from '@/components/Button/Icons';
 import { UniversalButton } from '@/components/Button/UniversalButton';
-import { CompanyPagination } from '@/components/CompanyPagination';
 import { DreamTeamLogo } from '@/components/DreamTeamLogo';
 import { CompanyForm, CompanyFormTypes } from '@/components/Forms/CompanyForm';
 import { SearchBar } from '@/components/Inputs/SearchBar';
@@ -28,6 +27,7 @@ import { IconWrapper } from '@/components/ListItem/styles';
 import { ProfilePicture } from '@/components/ProfilePicture';
 import { SignInPopup } from '@/components/SignInPopup';
 import { CompanyListTitle } from '@/components/Titles/CompanyList';
+import { CompanyPagination } from '@/pages/SuperAdminPage/components/CompanyPagination';
 
 export const SuperAdminPage = (): React.ReactElement => {
   const { selectedPage, selectedOption, handlePageChange, handleSelectChange } =
@@ -84,8 +84,7 @@ export const SuperAdminPage = (): React.ReactElement => {
             {isLoading ? (
               <h3>{t('loading')}</h3>
             ) : (
-              data &&
-              data.data.map((company) => (
+              data?.data.map((company) => (
                 <ListItem
                   key={company.id}
                   item={company}
@@ -116,9 +115,7 @@ export const SuperAdminPage = (): React.ReactElement => {
         closeModal={() => setEditModalOpen(false)}
         type={CompanyFormTypes.Edit}
       />
-      {error && (
-        <SignInPopup type='error' text='Failed to load companies data' />
-      )}
+      {error && <SignInPopup type='error' text={t('faliedToLoad')} />}
     </SuperAdminContainer>
   );
 };
