@@ -40,8 +40,10 @@ const resources = {
       addNewCompany: 'Add New Company',
       companyName: 'Company Name',
       actions: 'Actions',
-      companiesShown: 'Showing {{startIndex}} to {{endIndex}} of {{totalCompanies}} companies',
-      adminShow: 'Showing {{startIndex}} to {{endIndex}} of {{totalAdmins}} admins',
+      companiesShown:
+        'Showing {{startIndex}} to {{endIndex}} of {{totalCompanies}} companies',
+      adminShow:
+        'Showing {{startIndex}} to {{endIndex}} of {{totalAdmins}} admins',
       adminList: 'Admin List',
       addNewAdmin: 'Add New Admin',
       adminName: 'Admin Name',
@@ -70,6 +72,10 @@ const resources = {
       successLoginMessage: 'Login link sent to your email',
       userNotFoundError: 'Please enter valid credentials',
       errorMessage: 'Oops, something went wrong, please try again later',
+      breadcrumbs: {
+        companyList: 'Company List',
+        companyName: 'Company Name',
+      },
     },
   },
   fr: {
@@ -95,7 +101,8 @@ const resources = {
         UPCOMING: 'À venir',
       },
       welcomeMessage: 'Bienvenue sur Dreamteam!',
-      signInPrompt: 'Veuillez vous connecter à votre compte et commencer la livraison',
+      signInPrompt:
+        'Veuillez vous connecter à votre compte et commencer la livraison',
       emailLabel: 'E-mail',
       pagination: {
         previous: 'Précédent',
@@ -110,8 +117,10 @@ const resources = {
       addNewCompany: 'Ajouter une nouvelle entreprise',
       companyName: "Nom de l'entreprise",
       actions: 'Actes',
-      companiesShown: 'Affichage de {{startIndex}} à {{endIndex}} sur {{totalCompanies}} entreprises',
-      adminShown: 'Affichage de {{startIndex}} à {{endIndex}} sur {{totalAdmins}} administrateurs',
+      companiesShown:
+        'Affichage de {{startIndex}} à {{endIndex}} sur {{totalCompanies}} entreprises',
+      adminShown:
+        'Affichage de {{startIndex}} à {{endIndex}} sur {{totalAdmins}} administrateurs',
       adminList: 'Liste des administrateurs',
       addNewAdmin: 'Ajouter un nouvel administrateur',
       adminName: "Nom de l'administrateur",
@@ -131,15 +140,22 @@ const resources = {
       submit: 'Soumettre',
       cancel: 'Annuler',
       delete: 'Supprimer',
-      deleteWarning: 'Ces modifications ne peuvent pas être annulées. Êtes-vous sûr ?',
+      deleteWarning:
+        'Ces modifications ne peuvent pas être annulées. Êtes-vous sûr ?',
       termsAndPrivacy:
         'En continuant, vous acceptez nos <terms>Conditions Générales</terms> & <privacy>Politique de Confidentialité</privacy>',
       emailHelperText: 'Veuillez entrer une adresse e-mail valide',
       buttonLoading: 'Chargement...',
       signInButton: 'Se connecter',
       successLoginMessage: 'Lien de connexion envoyé à votre email',
-      userNotFoundError: "Veuillez saisir des informations d'identification valides",
-      errorMessage: "Oups, quelque chose s'est mal passé, veuillez réessayer plus tard",
+      userNotFoundError:
+        "Veuillez saisir des informations d'identification valides",
+      errorMessage:
+        "Oups, quelque chose s'est mal passé, veuillez réessayer plus tard",
+      breadcrumbs: {
+        companyList: 'Liste Des Entreprises',
+        companyName: "Nom de l'entreprise",
+      },
     },
   },
 };
@@ -149,7 +165,7 @@ i18n.use(initReactI18next).init({
   fallbackLng: 'en',
   lng: 'en',
   interpolation: {
-    escapeValue: false, 
+    escapeValue: false,
   },
 });
 

@@ -1,4 +1,5 @@
 import { useTranslation } from 'react-i18next';
+
 import { StyledLoginInput } from '@/components/Inputs/SignIn/styles.tsx';
 
 interface SignInInputProps {

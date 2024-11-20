@@ -1,21 +1,6 @@
 import { t } from 'i18next';
 import React from 'react';
 
-import { useAdmin } from './useAdmin';
-
-import SwapIcon from '@/assets/images/icons/SwapIcon.png';
-import { IconType } from '@/assets/styles/types.ts';
-import { BodyBase } from '@/assets/styles/typography.ts';
-import { AdminPagination } from '@/components/AdminPagination';
-import { BreadcrumbsNav } from '@/components/BreadcrumbsNav/BreadcrumbsNav';
-import { IconSet } from '@/components/Button/Icons';
-import { UniversalButton } from '@/components/Button/UniversalButton';
-import { DreamTeamLogo } from '@/components/DreamTeamLogo';
-import { AdminForm, AdminFormTypes } from '@/components/Forms/AdminForm';
-import { SearchBar } from '@/components/Inputs/SearchBar';
-import { ListItem } from '@/components/ListItem';
-import { ProfilePicture } from '@/components/ProfilePicture';
-import { CompanySidebar } from '@/components/Sidebars/CompanySidebar';
 import {
   AdminContainer,
   AdminListBody,
@@ -28,8 +13,24 @@ import {
   AdminPageHeader,
   AdminPageListContainer,
   SortButton,
-} from '@/pages/AdminPage/styles.ts';
-import { usePagination } from '@/pages/SuperAdminPage/usePagination';
+} from './styles';
+import { useAdmin } from './useAdmin';
+
+import SwapIcon from '@/assets/images/icons/SwapIcon.png';
+import { IconType } from '@/assets/styles/types';
+import { BodyBase } from '@/assets/styles/typography';
+import { AdminPagination } from '@/components/AdminPagination';
+import { BreadcrumbsNav } from '@/components/BreadcrumbsNav';
+import { IconSet } from '@/components/Button/Icons';
+import { UniversalButton } from '@/components/Button/UniversalButton';
+import { DreamTeamLogo } from '@/components/DreamTeamLogo';
+import { AdminDeleteForm } from '@/components/Forms/AdminDeleteForm';
+import { AdminForm, AdminFormTypes } from '@/components/Forms/AdminForm';
+import { SearchBar } from '@/components/Inputs/SearchBar';
+import { ListItem } from '@/components/ListItem';
+import { ProfilePicture } from '@/components/ProfilePicture';
+import { CompanySidebar } from '@/components/Sidebars/CompanySidebar';
+import { usePagination } from '@/pages/AdminPage/usePagination.ts';
 
 export const AdminPage = (): React.ReactElement => {
   const { selectedPage, selectedOption, handlePageChange, handleSelectChange } =
@@ -55,7 +56,7 @@ export const AdminPage = (): React.ReactElement => {
 
   const [addModalOpen, setAddModal] = React.useState(false);
   const [editModalOpen, setEditModal] = React.useState(false);
-
+  const [deleteModalOpen, setDeleteModal] = React.useState(false);
   return (
     <AdminContainer>
       <AdminPageHeader>
@@ -91,6 +92,7 @@ export const AdminPage = (): React.ReactElement => {
                     key={admin.id}
                     item={admin}
                     setModal={() => setEditModal(true)}
+                    setDeleteModal={() => setDeleteModal(true)}
                   />
                 ))}
               </AdminListBody>
@@ -109,6 +111,10 @@ export const AdminPage = (): React.ReactElement => {
             modalOpen={editModalOpen}
             closeModal={() => setEditModal(false)}
             type={AdminFormTypes.Edit}
+          />
+          <AdminDeleteForm
+            modalOpen={deleteModalOpen}
+            closeModal={() => setDeleteModal(false)}
           />
         </AdminPageListContainer>
       </AdminPageContainer>
