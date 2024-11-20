@@ -1,141 +1,117 @@
-import React, { useState } from 'react';
-import { useTranslation } from 'react-i18next';
+import { t } from 'i18next';
+import React from 'react';
 
-import {
-  AdminListWrapper,
-  Header,
-  HeaderActions,
-  PageInfo,
-  PaginationWrapper,
-  SortButton,
-  StyledSelect,
-  StyledSelectWrapper,
-  TableHeader,
-} from './styles';
 import { useAdmin } from './useAdmin';
 
 import SwapIcon from '@/assets/images/icons/SwapIcon.png';
-import { IconType } from '@/assets/styles/types';
-import { BodyBase, Heading } from '@/assets/styles/typography';
+import { IconType } from '@/assets/styles/types.ts';
+import { BodyBase } from '@/assets/styles/typography.ts';
+import { AdminPagination } from '@/components/AdminPagination';
+import { BreadcrumbsNav } from '@/components/BreadcrumbsNav/BreadcrumbsNav';
 import { IconSet } from '@/components/Button/Icons';
 import { UniversalButton } from '@/components/Button/UniversalButton';
+import { DreamTeamLogo } from '@/components/DreamTeamLogo';
+import { AdminForm, AdminFormTypes } from '@/components/Forms/AdminForm';
 import { SearchBar } from '@/components/Inputs/SearchBar';
-import AdminList from '@/components/Lists/AdminList';
-import { PaginationButton } from '@/components/Pagination/styles';
-import { Popup } from '@/components/Popup';
-import { usePagination } from '@/pages/SuperAdminPage/usePagination.ts';
+import { ListItem } from '@/components/ListItem';
+import { ProfilePicture } from '@/components/ProfilePicture';
+import { CompanySidebar } from '@/components/Sidebars/CompanySidebar';
+import {
+  AdminContainer,
+  AdminListBody,
+  AdminListContent,
+  AdminListFilter,
+  AdminListFooter,
+  AdminListHeader,
+  AdminPageBody,
+  AdminPageContainer,
+  AdminPageHeader,
+  AdminPageListContainer,
+  SortButton,
+} from '@/pages/AdminPage/styles.ts';
+import { usePagination } from '@/pages/SuperAdminPage/usePagination';
 
-const AdminPage: React.FC = () => {
-  const { t } = useTranslation();
-  const [isModalOpen, setModalOpen] = useState(false);
-
+export const AdminPage = (): React.ReactElement => {
   const { selectedPage, selectedOption, handlePageChange, handleSelectChange } =
     usePagination();
+  const pageData = { page: selectedPage, rowsPerPage: selectedOption };
   const {
-    sortOrder,
-    handleSort,
-    sortedAndPaginatedAdmins,
-    totalItems,
-    totalPages,
+    adminsData,
+    totalAdmins,
+    numberOfPages,
     startIndex,
     endIndex,
-  } = useAdmin(selectedPage, selectedOption);
-
-  const handleOpenModal = (): void => setModalOpen(true);
-  const handleCloseModal = (): void => setModalOpen(false);
-
-  const handleSubmit = async (): Promise<void> => {
-    console.log('Form submitted');
+    handleSort,
+    sortOrder,
+  } = useAdmin(pageData);
+  const paginationProps = {
+    totalAdmins,
+    numberOfPages,
+    startIndex,
+    endIndex,
+    handlePageChange,
+    handleSelectChange,
   };
 
+  const [addModalOpen, setAddModal] = React.useState(false);
+  const [editModalOpen, setEditModal] = React.useState(false);
+
   return (
-    <AdminListWrapper>
-      <Header>
-        <Heading>{t('adminList')}</Heading>
-        <HeaderActions>
-          <SearchBar />
-          <UniversalButton
-            size='mediumSmall'
-            icon={<IconSet iconType={IconType.AddWhite} />}
-            onClick={handleOpenModal}
-          >
-            {t('addNewAdmin')}
-          </UniversalButton>
-        </HeaderActions>
-      </Header>
+    <AdminContainer>
+      <AdminPageHeader>
+        <DreamTeamLogo />
+        <ProfilePicture name='Super Admin' />
+      </AdminPageHeader>
+      <BreadcrumbsNav />
+      <AdminPageContainer>
+        <CompanySidebar />
+        <AdminPageListContainer>
+          <AdminPageBody>
+            <AdminListContent>
+              <AdminListHeader>
+                <SearchBar />
+                <UniversalButton
+                  onClick={() => setAddModal(true)}
+                  size='mediumSmall'
+                  icon={<IconSet iconType={IconType.AddWhite} />}
+                >
+                  {t('addNewAdmin')}
+                </UniversalButton>
+              </AdminListHeader>
+              <AdminListBody>
+                <AdminListFilter>
+                  <SortButton sortOrder={sortOrder} onClick={handleSort}>
+                    <span>{t('adminName')}</span>
+                    <img src={SwapIcon} alt='Sort Icon' />
+                  </SortButton>
+                  <BodyBase>{t('actions')}</BodyBase>
+                </AdminListFilter>
+                {adminsData.map((admin) => (
+                  <ListItem
+                    key={admin.id}
+                    item={admin}
+                    setModal={() => setEditModal(true)}
+                  />
+                ))}
+              </AdminListBody>
+              <AdminListFooter>
+                <AdminPagination paginationProps={paginationProps} />
+              </AdminListFooter>
+            </AdminListContent>
+          </AdminPageBody>
 
-      <div>
-        <TableHeader>
-          <SortButton sortOrder={sortOrder} onClick={handleSort}>
-            <span>{t('adminName')}</span>
-            <img src={SwapIcon} alt='Sort Icon' />
-          </SortButton>
-          <BodyBase>{t('actions')}</BodyBase>
-        </TableHeader>
-        <AdminList admins={sortedAndPaginatedAdmins} />
-      </div>
-
-      <PaginationWrapper>
-        <PageInfo>
-          Showing {startIndex + 1} to {Math.min(endIndex, totalItems)} of{' '}
-          {totalItems} admins
-        </PageInfo>
-        <div>
-          <PaginationButton
-            onClick={(e) => handlePageChange(e, selectedPage - 1)}
-            disabled={selectedPage === 1}
-          >
-            Previous
-          </PaginationButton>
-          {[...Array(totalPages)].map((_, page) => (
-            <PaginationButton
-              key={`page-${page + 1}`}
-              active={selectedPage === page + 1 ? 'true' : 'false'}
-              onClick={(e) => handlePageChange(e, page + 1)}
-            >
-              {page + 1}
-            </PaginationButton>
-          ))}
-          <PaginationButton
-            onClick={(e) => handlePageChange(e, selectedPage + 1)}
-            disabled={selectedPage === totalPages}
-          >
-            Next
-          </PaginationButton>
-        </div>
-
-        <StyledSelectWrapper>
-          <StyledSelect
-            id='itemsPerPage'
-            value={selectedOption}
-            onChange={handleSelectChange}
-          >
-            {[5, 10, 15].map((option) => (
-              <option key={`option-${option}`} value={option}>
-                {option}
-              </option>
-            ))}
-          </StyledSelect>
-        </StyledSelectWrapper>
-      </PaginationWrapper>
-
-      <Popup
-        popupName={t('addNewAdmin')}
-        modalOpen={isModalOpen}
-        handleCloseModal={handleCloseModal}
-        handleSubmit={handleSubmit}
-      >
-        {[
-          <div key='adminName'>
-            <label>
-              {t('adminName')}
-              <input type='text' placeholder={t('enterAdminName')} />
-            </label>
-          </div>,
-        ]}
-      </Popup>
-    </AdminListWrapper>
+          <AdminForm
+            modalOpen={addModalOpen}
+            closeModal={() => setAddModal(false)}
+            type={AdminFormTypes.Add}
+          />
+          <AdminForm
+            modalOpen={editModalOpen}
+            closeModal={() => setEditModal(false)}
+            type={AdminFormTypes.Edit}
+          />
+        </AdminPageListContainer>
+      </AdminPageContainer>
+    </AdminContainer>
   );
 };
-
-export default AdminPage;

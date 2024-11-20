@@ -3,6 +3,7 @@ import React from 'react';
 
 import AddIcon from '@/assets/images/icons/AddIcon.png';
 import AddWhiteIcon from '@/assets/images/icons/AddWhiteIcon.png';
+import ArrowBackIcon from '@/assets/images/icons/ArrowBackIcon.png';
 import CloseBlackIcon from '@/assets/images/icons/CloseBlackIcon.png';
 import CloseIcon from '@/assets/images/icons/CloseIcon.png';
 import DeleteIcon from '@/assets/images/icons/DeleteIcon.png';
@@ -29,6 +30,7 @@ const iconComponents = {
   [IconType.Swap]: SwapIcon,
   [IconType.Close]: CloseIcon,
   [IconType.CloseBlack]: CloseBlackIcon,
+  [IconType.Back]: ArrowBackIcon,
 };
 
 export const IconSet: React.FC<IconSetProps> = ({

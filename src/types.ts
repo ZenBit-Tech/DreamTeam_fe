@@ -7,6 +7,7 @@ export enum IconType {
   Delete = 'Delete',
   Swap = 'Swap',
   Close = 'Close',
+  Back = 'Back',
 }
 
 export interface Order {

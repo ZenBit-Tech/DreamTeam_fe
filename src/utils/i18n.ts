@@ -10,7 +10,7 @@ const resources = {
       collectionTime: 'Collection Time',
       collectionAddress: 'Collection Address',
       luggageSize: 'Luggage, Size',
-      client: 'Client',
+      clientName: 'Client name',
       status: 'Status',
       route: 'Route',
       noLuggageData: 'No luggage data',
@@ -42,6 +42,8 @@ const resources = {
       actions: 'Actions',
       companiesShown:
         'Showing {{startIndex}} to {{endIndex}} of {{totalCompanies}} companies',
+      adminShow:
+        'Showing {{startIndex}} to {{endIndex}} of {{totalAdmins}} admins',
       adminList: 'Admin List',
       addNewAdmin: 'Add New Admin',
       adminName: 'Admin Name',
@@ -53,6 +55,9 @@ const resources = {
       previous: 'Previous',
       next: 'Next',
       enterAdminName: 'Enter Admin Name',
+      details: 'Details',
+      edit: 'Edit',
+      back: 'back',
     },
   },
   fr: {
@@ -63,7 +68,7 @@ const resources = {
       collectionTime: 'Heure de collecte',
       collectionAddress: 'Adresse de collecte',
       luggageSize: 'Bagages, Taille',
-      client: 'Client',
+      clientName: 'Nom du client',
       status: 'Statut',
       route: 'Itinéraire',
       noLuggageData: 'Aucune donnée de bagages',
@@ -96,6 +101,8 @@ const resources = {
       actions: 'Actes',
       companiesShown:
         'Affichage de {{startIndex}} à {{endIndex}} sur {{totalCompanies}} entreprises',
+      adminShown:
+        'Affichage de {{startIndex}} à {{endIndex}} sur {{totalAdmins}} administrateurs',
       adminList: 'Liste des administrateurs',
       addNewAdmin: 'Ajouter un nouvel administrateur',
       adminName: "Nom de l'administrateur",
@@ -107,6 +114,9 @@ const resources = {
       previous: 'Précédent',
       next: 'Suivant',
       enterAdminName: "Entrez le nom de l'administrateur",
+      details: 'Détails',
+      edit: 'Modifier',
+      back: 'retour',
     },
   },
 };
@@ -114,9 +124,9 @@ const resources = {
 i18n.use(initReactI18next).init({
   resources,
   fallbackLng: 'en',
-  lng: 'en',
+  lng: 'en', // устанавливаем язык по умолчанию
   interpolation: {
-    escapeValue: false,
+    escapeValue: false, // не нужно экранировать значения
   },
 });
 

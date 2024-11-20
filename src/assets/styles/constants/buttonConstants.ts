@@ -47,6 +47,7 @@ export const buttonColors = {
 export type ButtonColors = keyof typeof buttonColors;
 
 export const typographyStyles = {
+  test: BodySmall,
   small: BodySmall,
   mediumSmall: BodyBase,
   medium: BodyBase,
