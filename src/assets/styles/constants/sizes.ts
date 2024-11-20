@@ -9,4 +9,12 @@ export const SIZES = {
   bodyBase: '16px',
   bodyStrong: '16px',
   iconSize: '24px',
+  fontSizeDot: '20px',
+  logoTitle: '30px',
 };
+
+export enum ProfilePictureType {
+  Small = '38px',
+  Medium = '50px',
+  Large = '64px',
+}

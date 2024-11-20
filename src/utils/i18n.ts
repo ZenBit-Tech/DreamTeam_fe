@@ -4,44 +4,30 @@ import { initReactI18next } from 'react-i18next';
 const resources = {
   en: {
     translation: {
-      loading: 'Loading...',
-      errorFetchingOrders: 'Error fetching orders',
-      collectionDate: 'Collection Date',
-      collectionTime: 'Collection Time',
-      collectionAddress: 'Collection Address',
-      luggageSize: 'Luggage, Size',
-      clientName: 'Client name',
-      status: 'Status',
-      route: 'Route',
-      noLuggageData: 'No luggage data',
-      noCustomerData: 'No customer data',
-      noRoute: 'No route',
-      orderTime: '14-16',
-      orderStatus: {
-        COMPLETED: 'Completed',
-        FAILED: 'Failed',
-        NOT_ARRIVED: 'Not Arrived',
-        AT_RISK: 'At Risk',
-        UPCOMING: 'Upcoming',
-      },
-      welcomeMessage: 'Welcome to Smartporters! 👋',
+      welcomeMessage: 'Welcome to Dreamteam!',
       signInPrompt: 'Please sign in to your account and start the delivery',
       emailLabel: 'Email',
-      pagination: {
-        previous: 'Previous',
-        next: 'Next',
-        page: 'Page',
-        of: 'of',
-        showing: 'Showing',
-        to: 'to',
-        from: 'from',
-      },
       companyList: 'Company List',
       addNewCompany: 'Add New Company',
       companyName: 'Company Name',
       actions: 'Actions',
       companiesShown:
         'Showing {{startIndex}} to {{endIndex}} of {{totalCompanies}} companies',
+      company: 'Company',
+      organizationName: 'Organization Name',
+      clientName: 'Client Name',
+      submit: 'Submit',
+      cancel: 'Cancel',
+      delete: 'Delete',
+      deleteWarning: 'Those changes cannot be undone. Are you sure?',
+      termsAndPrivacy:
+        'By continuing, you agree to our <terms>Terms and Conditions</terms> & <privacy>Privacy Policy</privacy>',
+      emailHelperText: 'Please enter valid email',
+      buttonLoading: 'Loading...',
+      signInButton: 'Sign in',
+      successLoginMessage: 'Login link sent to your email',
+      userNotFoundError: 'Please enter valid credentials',
+      errorMessage: 'Oops, something went wrong, please try again later',
       adminShow:
         'Showing {{startIndex}} to {{endIndex}} of {{totalAdmins}} admins',
       adminList: 'Admin List',
@@ -62,45 +48,34 @@ const resources = {
   },
   fr: {
     translation: {
-      loading: 'Chargement...',
-      errorFetchingOrders: 'Erreur lors de la récupération des commandes',
-      collectionDate: 'Date de collecte',
-      collectionTime: 'Heure de collecte',
-      collectionAddress: 'Adresse de collecte',
-      luggageSize: 'Bagages, Taille',
-      clientName: 'Nom du client',
-      status: 'Statut',
-      route: 'Itinéraire',
-      noLuggageData: 'Aucune donnée de bagages',
-      noCustomerData: 'Aucune donnée client',
-      noRoute: "Pas d'itinéraire",
-      orderTime: '14-16',
-      orderStatus: {
-        COMPLETED: 'Terminé',
-        FAILED: 'Échoué',
-        NOT_ARRIVED: 'Pas arrivé',
-        AT_RISK: 'En danger',
-        UPCOMING: 'À venir',
-      },
-      welcomeMessage: 'Bienvenue chez Smartporters! 👋',
+      welcomeMessage: 'Bienvenue sur Dreamteam!',
       signInPrompt:
         'Veuillez vous connecter à votre compte et commencer la livraison',
       emailLabel: 'E-mail',
-      pagination: {
-        previous: 'Précédent',
-        next: 'Suivant',
-        page: 'Page',
-        of: 'de',
-        showing: 'Affichage',
-        to: 'à',
-        from: 'de',
-      },
       companyList: 'Liste Des Entreprises',
       addNewCompany: 'Ajouter une nouvelle entreprise',
       companyName: "Nom de l'entreprise",
       actions: 'Actes',
       companiesShown:
         'Affichage de {{startIndex}} à {{endIndex}} sur {{totalCompanies}} entreprises',
+      company: 'Entreprise',
+      organizationName: "Nom de l'organisation",
+      clientName: 'Nom du client',
+      submit: 'Soumettre',
+      cancel: 'Annuler',
+      delete: 'Supprimer',
+      deleteWarning:
+        'Ces modifications ne peuvent pas être annulées. Êtes-vous sûr ?',
+      termsAndPrivacy:
+        'En continuant, vous acceptez nos <terms>Conditions Générales</terms> & <privacy>Politique de Confidentialité</privacy>',
+      emailHelperText: 'Veuillez entrer une adresse e-mail valide',
+      buttonLoading: 'Chargement...',
+      signInButton: 'Se connecter',
+      successLoginMessage: 'Lien de connexion envoyé à votre email',
+      userNotFoundError:
+        "Veuillez saisir des informations d'identification valides",
+      errorMessage:
+        "Oups, quelque chose s'est mal passé, veuillez réessayer plus tard",
       adminShown:
         'Affichage de {{startIndex}} à {{endIndex}} sur {{totalAdmins}} administrateurs',
       adminList: 'Liste des administrateurs',
@@ -124,9 +99,9 @@ const resources = {
 i18n.use(initReactI18next).init({
   resources,
   fallbackLng: 'en',
-  lng: 'en', // устанавливаем язык по умолчанию
+  lng: 'en',
   interpolation: {
-    escapeValue: false, // не нужно экранировать значения
+    escapeValue: false,
   },
 });
 

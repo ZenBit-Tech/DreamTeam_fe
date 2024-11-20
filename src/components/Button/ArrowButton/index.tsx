@@ -21,23 +21,25 @@ export const ArrowButton: React.FC<ArrowButtonProps> = ({
 }) => {
   const buttonColorKey = buttonColor as keyof typeof buttonColors;
 
+  const isOutlineOrGlowing =
+    variant === buttonVariants.outline || variant === buttonVariants.glowing;
+
+  const iconColor = isOutlineOrGlowing
+    ? buttonColors[buttonColorKey] || COLORS.accent500
+    : COLORS.onPrimary;
+
+  const fontSize = iconSizes[size as keyof typeof iconSizes];
+
   return (
     <ArrowButtonStyled
       $variant={variant as ButtonVariant}
       $size={size as ButtonSize}
       $buttonColor={buttonColorKey}
+      fontSize={fontSize}
+      color={iconColor}
       onClick={onClick}
     >
-      <ArrowBack
-        style={{
-          fontSize: iconSizes[size],
-          color:
-            variant === buttonVariants.outline ||
-            variant === buttonVariants.glowing
-              ? buttonColors[buttonColorKey] || COLORS.accent500
-              : COLORS.onPrimary,
-        }}
-      />
+      <ArrowBack />
     </ArrowButtonStyled>
   );
 };

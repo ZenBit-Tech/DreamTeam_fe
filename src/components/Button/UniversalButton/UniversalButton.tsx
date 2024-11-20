@@ -1,5 +1,7 @@
 import React from 'react';
-import styled, { css } from 'styled-components';
+import styled, { css, RuleSet } from 'styled-components';
+
+import { IconWrapper } from './styles';
 
 import {
   buttonSizes,
@@ -10,6 +12,9 @@ import {
   ButtonVariant,
   ButtonSize,
 } from '@/assets/styles/constants/buttonConstants';
+import { COLORS } from '@/assets/styles/constants/colors';
+import { SIZES } from '@/assets/styles/constants/sizes';
+import { STYLES } from '@/assets/styles/constants/stylesConstants';
 
 const ButtonStyled = styled.button<{
   $variant?: ButtonVariant;
@@ -20,55 +25,57 @@ const ButtonStyled = styled.button<{
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0 16px;
-  height: ${({ $size }) => buttonSizes[$size || 'medium']};
-  background-color: ${({ $variant, $buttonColor }) =>
+  padding: 0 ${STYLES.paddingHorizontal};
+  height: ${({ $size }): string => buttonSizes[$size || 'medium']};
+  background-color: ${({ $variant, $buttonColor }): string =>
     $variant === buttonVariants.outline ||
     $variant === buttonVariants.dotted ||
     $variant === buttonVariants.glowing
       ? 'transparent'
       : $buttonColor || buttonColors[$variant || 'primary']};
-  color: ${({ $variant, $buttonColor }) =>
+  color: ${({ $variant, $buttonColor }): string =>
     $variant === buttonVariants.outline ||
     $variant === buttonVariants.dotted ||
     $variant === buttonVariants.glowing
       ? $buttonColor || buttonColors.primary
-      : '#fff'};
-  border: ${({ $variant, $buttonColor }) =>
+      : COLORS.onPrimary};
+  border: ${({ $variant, $buttonColor }): string =>
     $variant === buttonVariants.outline ||
     $variant === buttonVariants.dotted ||
     $variant === buttonVariants.glowing
       ? `2px solid ${$buttonColor || buttonColors.primary}`
       : 'none'};
-  border-radius: 8px;
+  border-radius: ${STYLES.borderRadius};
   font-weight: 500;
-  cursor: ${({ $variant }) =>
+  cursor: ${({ $variant }): string =>
     $variant === buttonVariants.disabled ? 'not-allowed' : 'pointer'};
-  opacity: ${({ $variant }) =>
-    $variant === buttonVariants.disabled ? 0.6 : 1};
-  transition: all 0.3s ease;
+  opacity: ${({ $variant }): number =>
+    $variant === buttonVariants.disabled ? STYLES.opacityDisabled : 1};
+  transition: all ${STYLES.transitionDuration} ease;
 
   &:hover {
-    opacity: ${({ $variant }) =>
-      $variant === buttonVariants.disabled ? 0.6 : 0.8};
+    opacity: ${({ $variant }): number =>
+      $variant === buttonVariants.disabled
+        ? STYLES.opacityDisabled
+        : STYLES.opacityHover};
   }
 
-  ${({ $variant, $dotColor }) =>
+  ${({ $variant, $dotColor }): false | RuleSet =>
     $variant === buttonVariants.dotted &&
     css`
-      gap: 16px;
+      gap: ${STYLES.paddingHorizontal};
       &::before {
         content: '•';
-        font-size: 20px;
+        font-size: ${SIZES.fontSizeDot};
         color: ${$dotColor || buttonColors.primary};
       }
     `}
 
-  ${({ $variant }) =>
+  ${({ $variant }): false | RuleSet =>
     $variant === buttonVariants.glowing &&
     css`
-      outline: 3px solid ${buttonColors.glowingBorder};
-      outline-offset: 0px;
+      outline: ${STYLES.glowingOutlineWidth} solid ${buttonColors.glowingBorder};
+      outline-offset: 0;
     `}
 `;
 
@@ -92,9 +99,9 @@ export const UniversalButton: React.FC<ButtonProps> = ({
       $dotColor={dotColor}
       onClick={onClick}
     >
-      {icon && <span style={{ marginRight: '8px' }}>{icon}</span>}
+      {icon && <IconWrapper position='left'>{icon}</IconWrapper>}
       <TypographyComponent>{children}</TypographyComponent>
-      {iconRight && <span style={{ marginLeft: '8px' }}>{iconRight}</span>}
+      {iconRight && <IconWrapper position='right'>{iconRight}</IconWrapper>}
     </ButtonStyled>
   );
 };

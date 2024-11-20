@@ -15,7 +15,7 @@ export const NameBaige: React.FC<ProfileCardProps> = ({
   companyName,
   email,
 }) => {
-  const rgbColor: string = hexToRgb(COLORS.accent500);
+  const rgbColor: string | null = hexToRgb(COLORS.accent500);
 
   return (
     <Box

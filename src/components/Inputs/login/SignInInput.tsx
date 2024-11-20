@@ -1,7 +1,7 @@
 import { LabelSM } from '@/assets/styles/typography.ts';
-import { StyledLoginInput } from '@/components/Inputs/login/styles.tsx';
+import { StyledLoginInput } from '@/components/Inputs/SignIn/styles';
 
-const SignInInput = () => {
+const SignInInput = (): JSX.Element => {
   return (
     <div>
       <LabelSM>Email</LabelSM>
