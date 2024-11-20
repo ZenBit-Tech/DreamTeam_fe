@@ -24,7 +24,7 @@ const resources = {
         AT_RISK: 'At Risk',
         UPCOMING: 'Upcoming',
       },
-      welcomeMessage: 'Welcome to Smartporters! 👋',
+      welcomeMessage: 'Welcome to Dreamteam!',
       signInPrompt: 'Please sign in to your account and start the delivery',
       emailLabel: 'Email',
       pagination: {
@@ -40,10 +40,8 @@ const resources = {
       addNewCompany: 'Add New Company',
       companyName: 'Company Name',
       actions: 'Actions',
-      companiesShown:
-        'Showing {{startIndex}} to {{endIndex}} of {{totalCompanies}} companies',
-      adminShow:
-        'Showing {{startIndex}} to {{endIndex}} of {{totalAdmins}} admins',
+      companiesShown: 'Showing {{startIndex}} to {{endIndex}} of {{totalCompanies}} companies',
+      adminShow: 'Showing {{startIndex}} to {{endIndex}} of {{totalAdmins}} admins',
       adminList: 'Admin List',
       addNewAdmin: 'Add New Admin',
       adminName: 'Admin Name',
@@ -58,6 +56,20 @@ const resources = {
       details: 'Details',
       edit: 'Edit',
       back: 'back',
+      company: 'Company',
+      organizationName: 'Organization Name',
+      submit: 'Submit',
+      cancel: 'Cancel',
+      delete: 'Delete',
+      deleteWarning: 'Those changes cannot be undone. Are you sure?',
+      termsAndPrivacy:
+        'By continuing, you agree to our <terms>Terms and Conditions</terms> & <privacy>Privacy Policy</privacy>',
+      emailHelperText: 'Please enter valid email',
+      buttonLoading: 'Loading...',
+      signInButton: 'Sign in',
+      successLoginMessage: 'Login link sent to your email',
+      userNotFoundError: 'Please enter valid credentials',
+      errorMessage: 'Oops, something went wrong, please try again later',
     },
   },
   fr: {
@@ -82,9 +94,8 @@ const resources = {
         AT_RISK: 'En danger',
         UPCOMING: 'À venir',
       },
-      welcomeMessage: 'Bienvenue chez Smartporters! 👋',
-      signInPrompt:
-        'Veuillez vous connecter à votre compte et commencer la livraison',
+      welcomeMessage: 'Bienvenue sur Dreamteam!',
+      signInPrompt: 'Veuillez vous connecter à votre compte et commencer la livraison',
       emailLabel: 'E-mail',
       pagination: {
         previous: 'Précédent',
@@ -99,10 +110,8 @@ const resources = {
       addNewCompany: 'Ajouter une nouvelle entreprise',
       companyName: "Nom de l'entreprise",
       actions: 'Actes',
-      companiesShown:
-        'Affichage de {{startIndex}} à {{endIndex}} sur {{totalCompanies}} entreprises',
-      adminShown:
-        'Affichage de {{startIndex}} à {{endIndex}} sur {{totalAdmins}} administrateurs',
+      companiesShown: 'Affichage de {{startIndex}} à {{endIndex}} sur {{totalCompanies}} entreprises',
+      adminShown: 'Affichage de {{startIndex}} à {{endIndex}} sur {{totalAdmins}} administrateurs',
       adminList: 'Liste des administrateurs',
       addNewAdmin: 'Ajouter un nouvel administrateur',
       adminName: "Nom de l'administrateur",
@@ -117,6 +126,20 @@ const resources = {
       details: 'Détails',
       edit: 'Modifier',
       back: 'retour',
+      company: 'Entreprise',
+      organizationName: "Nom de l'organisation",
+      submit: 'Soumettre',
+      cancel: 'Annuler',
+      delete: 'Supprimer',
+      deleteWarning: 'Ces modifications ne peuvent pas être annulées. Êtes-vous sûr ?',
+      termsAndPrivacy:
+        'En continuant, vous acceptez nos <terms>Conditions Générales</terms> & <privacy>Politique de Confidentialité</privacy>',
+      emailHelperText: 'Veuillez entrer une adresse e-mail valide',
+      buttonLoading: 'Chargement...',
+      signInButton: 'Se connecter',
+      successLoginMessage: 'Lien de connexion envoyé à votre email',
+      userNotFoundError: "Veuillez saisir des informations d'identification valides",
+      errorMessage: "Oups, quelque chose s'est mal passé, veuillez réessayer plus tard",
     },
   },
 };
@@ -124,9 +147,9 @@ const resources = {
 i18n.use(initReactI18next).init({
   resources,
   fallbackLng: 'en',
-  lng: 'en', // устанавливаем язык по умолчанию
+  lng: 'en',
   interpolation: {
-    escapeValue: false, // не нужно экранировать значения
+    escapeValue: false, 
   },
 });
 

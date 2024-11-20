@@ -8,10 +8,11 @@ import {
   StyledItemName,
 } from './styles';
 
+import { ProfilePictureType } from '@/assets/styles/constants/sizes';
 import { IconType } from '@/assets/styles/types';
 import { BodySmall, BodyStrong } from '@/assets/styles/typography';
 import { IconSet } from '@/components/Button/Icons';
-import { ProfilePicture, ProfilePicureType } from '@/components/ProfilePicture';
+import { ProfilePicture } from '@/components/ProfilePicture';
 
 interface ListItemProps {
   item: {
@@ -19,18 +20,20 @@ interface ListItemProps {
     email: string;
   };
   setModal: () => void;
+  setDeleteModal: () => void;
 }
 
 export const ListItem = ({
   item,
   setModal,
+  setDeleteModal,
 }: ListItemProps): React.ReactNode => {
   return (
     <ListItemWrapper>
       <ProfileContacts>
         <ProfilePicture
           name={item.organization_name}
-          type={ProfilePicureType.Small}
+          type={ProfilePictureType.Small}
         />
         <ContactInfo>
           <StyledItemName>
@@ -45,7 +48,7 @@ export const ListItem = ({
         <IconWrapper onClick={setModal}>
           <IconSet iconType={IconType.Edit} />
         </IconWrapper>
-        <IconWrapper>
+        <IconWrapper onClick={setDeleteModal}>
           <IconSet iconType={IconType.Delete} />
         </IconWrapper>
       </StyledIcons>

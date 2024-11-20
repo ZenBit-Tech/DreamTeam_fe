@@ -1,24 +1,23 @@
-import keyIcon from '@/assets/images/key.png';
-import lockIcon from '@/assets/images/lock.png';
-import logo from '@/assets/images/logo.png';
-import {
-  Container,
-  Icon,
-  IconWrapperBottomRight,
-  IconWrapperTopLeft,
-  Logo,
-} from '@/components/LogoWithIcons/styles.ts';
+import React from 'react';
 
-export const LogoWithIcons: React.FC = () => {
+import { LogoSvg } from './LogoSvg';
+import { LogoTitle } from './LogoTitle';
+
+import { Container } from '@/components/LogoWithIcons/styles.ts';
+
+interface LogoWithIconsProps {
+  logoSvgColor: string;
+  logoTitleColor: string;
+}
+
+export const LogoWithIcons: React.FC<LogoWithIconsProps> = ({
+  logoSvgColor,
+  logoTitleColor,
+}): JSX.Element => {
   return (
     <Container>
-      <Logo src={logo} alt='logo' />
-      <IconWrapperTopLeft>
-        <Icon src={keyIcon} alt='key' />
-      </IconWrapperTopLeft>
-      <IconWrapperBottomRight>
-        <Icon src={lockIcon} alt='lock' />
-      </IconWrapperBottomRight>
+      <LogoSvg color={logoSvgColor} />
+      <LogoTitle color={logoTitleColor} />
     </Container>
   );
 };

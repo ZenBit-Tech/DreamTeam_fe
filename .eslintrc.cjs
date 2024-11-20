@@ -92,8 +92,17 @@ module.exports = {
       'warn',
       { allowConstantExport: true },
     ],
-    'typesafe/no-throw-sync-func': 'error',
+    'react/require-default-props': 'warn',
+    'typesafe/no-throw-sync-func': 'warn',
     'typesafe/no-await-without-trycatch': 'warn',
     'typesafe/promise-catch': 'error',
   },
+  overrides: [
+    {
+      files: ['*.slice.ts'],
+      rules: {
+        'no-param-reassign': 'off',
+      },
+    },
+  ],
 };

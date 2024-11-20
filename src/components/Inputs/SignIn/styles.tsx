@@ -1,23 +1,28 @@
+import { TextField } from '@mui/material';
 import styled from 'styled-components';
 
 import { COLORS } from '@/assets/styles/constants/colors.ts';
-import { FONTS } from '@/assets/styles/constants/fonts.ts';
 
-export const StyledLoginInput = styled.input`
-  width: 400px;
-  height: 38px;
-  padding: 7px 14px;
-  border-radius: 6px;
-  font-size: 15px;
-  line-height: 22px;
-  color: ${COLORS.onSurfaceVariant};
-  font-family: ${FONTS.PUBLIC_SANS};
-  border: 1px solid ${COLORS.secondaryContainer};
-  box-sizing: border-box;
-  gap: 12px;
-  opacity: 1;
-  ::placeholder {
-    color: ${COLORS.onSurfaceVariant};
-    opacity: 1;
+export const StyledLoginInput = styled(TextField)`
+  && {
+    margin-bottom: 30px;
+  }
+
+  width: 100%;
+  height: 56px;
+
+  .MuiOutlinedInput-root {
+    &.Mui-focused fieldset {
+      border-color: ${COLORS.onSurfaceVariant};
+    }
+  }
+  .MuiInputLabel-root {
+    &.Mui-focused {
+      color: ${COLORS.secondary};
+    }
+  }
+
+  .MuiFormHelperText-root {
+    color: ${COLORS.error};
   }
 `;

@@ -3,4 +3,5 @@ export const FONTS = {
   ROBOTO: "'Roboto', sans-serif",
   INTER: "'Inter', sans-serif",
   ROBOTO_MONO: "'Roboto Mono', monospace",
+  AKSHAR: "'Akshar', sans-serif",
 };

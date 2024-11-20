@@ -21,3 +21,9 @@ export const CreateRouteBtn = styled.div`
   justify-content: center;
   align-items: center;
 `;
+
+export const IconWrapper = styled.span`
+  color: ${COLORS.onPrimary};
+  margin-right: 10px;
+  font-size: ${SIZES.iconSize};
+`;

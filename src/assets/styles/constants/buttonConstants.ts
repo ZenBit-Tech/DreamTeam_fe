@@ -11,6 +11,7 @@ export const buttonVariants = {
   disabled: 'disabled',
   glowing: 'glowing',
   dotted: 'dotted',
+  error: 'error',
 };
 
 export type ButtonVariant = keyof typeof buttonVariants;
@@ -42,6 +43,7 @@ export const buttonColors = {
   glowing: COLORS.accent500,
   glowingBorder: COLORS.accent700,
   dotted: COLORS.accent500,
+  error: COLORS.error,
 };
 
 export type ButtonColors = keyof typeof buttonColors;
@@ -49,10 +51,10 @@ export type ButtonColors = keyof typeof buttonColors;
 export const typographyStyles = {
   test: BodySmall,
   small: BodySmall,
-  mediumSmall: BodyBase,
   medium: BodyBase,
   large: BodyBaseLarge,
   huge: BodyBaseLarge,
+  mediumSmall: BodyBase,
 };
 
 export type ButtonProps = {
