@@ -39,7 +39,7 @@ export const BreadcrumbsNav = (): React.ReactElement => {
         if (pathObj) {
           return isLast ? renderTypography(pathObj.label) : renderLink(pathObj);
         }
-        return null; // Убедимся, что всегда возвращается значение
+        return null;
       })}
     </Breadcrumbs>
   );
