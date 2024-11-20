@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
+import { persistor } from '@/redux/store';
 import { IUser } from '@/types/user.interface';
 
 interface AuthState {
@@ -30,7 +31,7 @@ const authSlice = createSlice({
       state.user = null;
       state.token = null;
 
-      localStorage.removeItem('persist:auth');
+      persistor.purge();
     },
   },
 });
