@@ -18,3 +18,4 @@ export enum ProfilePictureType {
   Medium = '50px',
   Large = '64px',
 }
+
