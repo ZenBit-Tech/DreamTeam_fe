@@ -20,6 +20,7 @@ import { BodyBase } from '@/assets/styles/typography';
 import { IconSet } from '@/components/Button/Icons';
 import { UniversalButton } from '@/components/Button/UniversalButton';
 import { DreamTeamLogo } from '@/components/DreamTeamLogo';
+import { CompanyDeleteForm } from '@/components/Forms/CompanyDeleteForm';
 import { CompanyForm, CompanyFormTypes } from '@/components/Forms/CompanyForm';
 import { SearchBar } from '@/components/Inputs/SearchBar';
 import { ListItem } from '@/components/ListItem';
@@ -51,6 +52,7 @@ export const SuperAdminPage = (): React.ReactElement => {
     rowsPerPage: selectedOption,
   });
 
+  const [deleteModalOpen, setDeleteModal] = React.useState(false);
   return (
     <SuperAdminContainer>
       <SuperAdminHeader>
@@ -89,6 +91,7 @@ export const SuperAdminPage = (): React.ReactElement => {
                   key={company.id}
                   item={company}
                   setModal={() => setEditModalOpen(true)}
+                  setDeleteModal={() => setDeleteModal(true)}
                 />
               ))
             )}
@@ -114,6 +117,10 @@ export const SuperAdminPage = (): React.ReactElement => {
         modalOpen={editModalOpen}
         closeModal={() => setEditModalOpen(false)}
         type={CompanyFormTypes.Edit}
+      />
+      <CompanyDeleteForm
+        modalOpen={deleteModalOpen}
+        closeModal={() => setDeleteModal(false)}
       />
       {error && <SignInPopup type='error' text={t('faliedToLoad')} />}
     </SuperAdminContainer>
