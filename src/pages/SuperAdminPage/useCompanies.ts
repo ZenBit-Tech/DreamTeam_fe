@@ -1,71 +1,79 @@
-interface useCompaniesProps {
+import { SerializedError } from '@reduxjs/toolkit';
+import { FetchBaseQueryError } from '@reduxjs/toolkit/query';
+import { Dispatch, SetStateAction, useCallback, useState } from 'react';
+
+import {
+  CompanyInterface,
+  useGetCompaniesQuery,
+} from '@/redux/company/companyApi.slice';
+import { useDebounce } from '@/utils/useDebounce';
+
+interface UseCompaniesProps {
   page: number;
   rowsPerPage: number;
 }
-type CompaniesType = {
-  id: number;
-  organization_name: string;
-  email: string;
-};
+
+interface UseCompaniesResult {
+  startIndex: number;
+  endIndex: number;
+  addModalOpen: boolean;
+  editModalOpen: boolean;
+  data?: CompanyInterface;
+  error?: FetchBaseQueryError | SerializedError;
+  isLoading: boolean;
+  totalCompanies: number;
+  numberOfPages: number;
+  setAddModalOpen: Dispatch<SetStateAction<boolean>>;
+  setEditModalOpen: Dispatch<SetStateAction<boolean>>;
+  handleSortToggle: () => void;
+  handleSearchChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+}
+
 export const useCompanies = ({
   page,
   rowsPerPage,
-}: useCompaniesProps): {
-  companiesData: CompaniesType[];
-  totalCompanies: number;
-  numberOfPages: number;
-  startIndex: number;
-  endIndex: number;
-} => {
-  const companies = [
-    { id: 1, organization_name: 'Air Baltic', email: 'test@test.com' },
-    { id: 2, organization_name: 'British Airways', email: 'test@test.com' },
-    { id: 3, organization_name: 'Turkish Airlines', email: 'test@test.com' },
-    { id: 4, organization_name: 'Emirates Baltic', email: 'test@test.com' },
-    { id: 5, organization_name: 'Cathay Pacific', email: 'test@test.com' },
-    { id: 6, organization_name: 'Ryanair', email: 'test@test.com' },
-    { id: 7, organization_name: 'Air Baltic', email: 'test@test.com' },
-    { id: 8, organization_name: 'British Airways', email: 'test@test.com' },
-    { id: 9, organization_name: 'Turkish Airlines', email: 'test@test.com' },
-    { id: 10, organization_name: 'Emirates Baltic', email: 'test@test.com' },
-    { id: 11, organization_name: 'Cathay Pacific', email: 'test@test.com' },
-    { id: 12, organization_name: 'Ryanair', email: 'test@test.com' },
-    { id: 13, organization_name: 'Air Baltic', email: 'test@test.com' },
-    { id: 14, organization_name: 'British Airways', email: 'test@test.com' },
-    { id: 15, organization_name: 'Turkish Airlines', email: 'test@test.com' },
-    { id: 16, organization_name: 'Emirates Baltic', email: 'test@test.com' },
-    { id: 17, organization_name: 'Cathay Pacific', email: 'test@test.com' },
-    { id: 18, organization_name: 'Ryanair', email: 'test@test.com' },
-    { id: 19, organization_name: 'Air Baltic', email: 'test@test.com' },
-    { id: 20, organization_name: 'British Airways', email: 'test@test.com' },
-    { id: 21, organization_name: 'Turkish Airlines', email: 'test@test.com' },
-    { id: 22, organization_name: 'Emirates Baltic', email: 'test@test.com' },
-    { id: 23, organization_name: 'Cathay Pacific', email: 'test@test.com' },
-    { id: 24, organization_name: 'Ryanair', email: 'test@test.com' },
-    { id: 25, organization_name: 'Air Baltic', email: 'test@test.com' },
-    { id: 26, organization_name: 'British Airways', email: 'test@test.com' },
-    { id: 27, organization_name: 'Turkish Airlines', email: 'test@test.com' },
-    { id: 28, organization_name: 'Emirates Baltic', email: 'test@test.com' },
-    { id: 29, organization_name: 'Cathay Pacific', email: 'test@test.com' },
-    { id: 30, organization_name: 'Ryanair', email: 'test@test.com' },
-    { id: 31, organization_name: 'Air Baltic', email: 'test@test.com' },
-    { id: 32, organization_name: 'British Airways', email: 'test@test.com' },
-    { id: 33, organization_name: 'Turkish Airlines', email: 'test@test.com' },
-    { id: 34, organization_name: 'Emirates Baltic', email: 'test@test.com' },
-    { id: 35, organization_name: 'Cathay Pacific', email: 'test@test.com' },
-    { id: 36, organization_name: 'Ryanair', email: 'test@test.com' },
-  ];
+}: UseCompaniesProps): UseCompaniesResult => {
+  const [addModalOpen, setAddModalOpen] = useState(false);
+  const [editModalOpen, setEditModalOpen] = useState(false);
+  const [searchValue, setSearchValue] = useState('');
+  const [isAscending, setIsAscending] = useState(true);
 
-  const numberOfPages = Math.ceil(companies.length / rowsPerPage);
   const startIndex = (page - 1) * rowsPerPage;
   const endIndex = startIndex + rowsPerPage;
-  const returnedCompanies = companies.slice(startIndex, endIndex);
+
+  const debouncedSearch = useDebounce({ searchValue, delay: 500 });
+
+  const sortOrder = isAscending ? 'ASC' : 'DESC';
+  const searchQuery = `?organization-name=${debouncedSearch}&page=${page}&limit=${rowsPerPage}&sort=${sortOrder}`;
+  const { data, error, isLoading } = useGetCompaniesQuery(searchQuery);
+
+  const totalCompanies = data?.total || 0;
+  const numberOfPages = Math.ceil(totalCompanies / rowsPerPage);
+
+  const handleSortToggle = useCallback(
+    () => setIsAscending((prev: boolean) => !prev),
+    []
+  );
+  const handleSearchChange = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      setSearchValue(e.target.value);
+    },
+    []
+  );
 
   return {
-    companiesData: returnedCompanies,
-    totalCompanies: companies.length,
-    numberOfPages,
     startIndex,
     endIndex,
+    addModalOpen,
+    editModalOpen,
+    data,
+    error,
+    isLoading,
+    totalCompanies,
+    numberOfPages,
+    setAddModalOpen,
+    setEditModalOpen,
+    handleSortToggle,
+    handleSearchChange,
   };
 };
