@@ -26,5 +26,5 @@ export const IconWrapper = styled.div`
   top: 55%;
   right: 8%;
   transform: translateY(-50%);
-  pointer-events: none;
+  cursor: pointer;
 `;

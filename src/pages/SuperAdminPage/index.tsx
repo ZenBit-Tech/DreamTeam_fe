@@ -19,33 +19,39 @@ import { IconType } from '@/assets/styles/types';
 import { BodyBase } from '@/assets/styles/typography';
 import { IconSet } from '@/components/Button/Icons';
 import { UniversalButton } from '@/components/Button/UniversalButton';
-import { CompanyPagination } from '@/components/CompanyPagination';
 import { DreamTeamLogo } from '@/components/DreamTeamLogo';
 import { CompanyDeleteForm } from '@/components/Forms/CompanyDeleteForm';
 import { CompanyForm, CompanyFormTypes } from '@/components/Forms/CompanyForm';
 import { SearchBar } from '@/components/Inputs/SearchBar';
 import { ListItem } from '@/components/ListItem';
+import { IconWrapper } from '@/components/ListItem/styles';
 import { ProfilePicture } from '@/components/ProfilePicture';
+import { SignInPopup } from '@/components/SignInPopup';
 import { CompanyListTitle } from '@/components/Titles/CompanyList';
+import { CompanyPagination } from '@/pages/SuperAdminPage/components/CompanyPagination';
 
 export const SuperAdminPage = (): React.ReactElement => {
   const { selectedPage, selectedOption, handlePageChange, handleSelectChange } =
     usePagination();
-
-  const pageData = { page: selectedPage, rowsPerPage: selectedOption };
-  const { companiesData, totalCompanies, numberOfPages, startIndex, endIndex } =
-    useCompanies(pageData);
-  const paginationProps = {
-    totalCompanies,
-    numberOfPages,
+  const {
     startIndex,
     endIndex,
-    handlePageChange,
-    handleSelectChange,
-  };
+    addModalOpen,
+    editModalOpen,
+    data,
+    error,
+    isLoading,
+    totalCompanies,
+    numberOfPages,
+    setAddModalOpen,
+    setEditModalOpen,
+    handleSortToggle,
+    handleSearchChange,
+  } = useCompanies({
+    page: selectedPage,
+    rowsPerPage: selectedOption,
+  });
 
-  const [addModalOpen, setAddModal] = React.useState(false);
-  const [editModalOpen, setEditModal] = React.useState(false);
   const [deleteModalOpen, setDeleteModal] = React.useState(false);
   return (
     <SuperAdminContainer>
@@ -57,9 +63,9 @@ export const SuperAdminPage = (): React.ReactElement => {
         <CompanyListTitle />
         <CompanyListContent>
           <CompanyListHeader>
-            <SearchBar />
+            <SearchBar onChange={handleSearchChange} />
             <UniversalButton
-              onClick={() => setAddModal(true)}
+              onClick={() => setAddModalOpen(true)}
               size='mediumSmall'
               icon={<IconSet iconType={IconType.AddWhite} />}
             >
@@ -70,39 +76,53 @@ export const SuperAdminPage = (): React.ReactElement => {
             <CompanyListFilter>
               <CompanyName>
                 <BodyBase>{t('companyName')}</BodyBase>
-                <IconSet iconType={IconType.Swap} />
+                <IconWrapper onClick={handleSortToggle}>
+                  <IconSet iconType={IconType.Swap} />
+                </IconWrapper>
               </CompanyName>
 
               <BodyBase>{t('actions')}</BodyBase>
             </CompanyListFilter>
-            {companiesData.map((company) => (
-              <ListItem
-                key={company.id}
-                item={company}
-                setModal={() => setEditModal(true)}
-                setDeleteModal={() => setDeleteModal(true)}
-              />
-            ))}
+            {isLoading ? (
+              <h3>{t('loading')}</h3>
+            ) : (
+              data?.data.map((company) => (
+                <ListItem
+                  key={company.id}
+                  item={company}
+                  setModal={() => setEditModalOpen(true)}
+                  setDeleteModal={() => setDeleteModal(true)}
+                />
+              ))
+            )}
           </CompanyListBody>
           <CompanyListFooter>
-            <CompanyPagination paginationProps={paginationProps} />
+            <CompanyPagination
+              totalCompanies={totalCompanies}
+              numberOfPages={numberOfPages}
+              startIndex={startIndex}
+              endIndex={endIndex}
+              handlePageChange={handlePageChange}
+              handleSelectChange={handleSelectChange}
+            />
           </CompanyListFooter>
         </CompanyListContent>
       </SuperAdminBody>
       <CompanyForm
         modalOpen={addModalOpen}
-        closeModal={() => setAddModal(false)}
+        closeModal={() => setAddModalOpen(false)}
         type={CompanyFormTypes.Add}
       />
       <CompanyForm
         modalOpen={editModalOpen}
-        closeModal={() => setEditModal(false)}
+        closeModal={() => setEditModalOpen(false)}
         type={CompanyFormTypes.Edit}
       />
       <CompanyDeleteForm
         modalOpen={deleteModalOpen}
         closeModal={() => setDeleteModal(false)}
       />
+      {error && <SignInPopup type='error' text={t('faliedToLoad')} />}
     </SuperAdminContainer>
   );
 };

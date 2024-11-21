@@ -20,10 +20,9 @@ import { IconType } from '@/types.ts';
 
 export const CompanySidebar = (): React.ReactElement => {
   const companyDetails = {
-    clientName: 'John Doe',
-    email: 'vafgot@vultukir.org',
+    clientName: t('clientNameSideBar'),
+    email: t('emailSideBar'),
   };
-
   return (
     <SidebarContainer>
       <HeadingSection>

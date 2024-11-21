@@ -44,7 +44,9 @@ export const AdminPage = (): React.ReactElement => {
     endIndex,
     handleSort,
     sortOrder,
+    handleSearchChange,
   } = useAdmin(pageData);
+
   const paginationProps = {
     totalAdmins,
     numberOfPages,
@@ -57,6 +59,7 @@ export const AdminPage = (): React.ReactElement => {
   const [addModalOpen, setAddModal] = React.useState(false);
   const [editModalOpen, setEditModal] = React.useState(false);
   const [deleteModalOpen, setDeleteModal] = React.useState(false);
+
   return (
     <AdminContainer>
       <AdminPageHeader>
@@ -70,7 +73,7 @@ export const AdminPage = (): React.ReactElement => {
           <AdminPageBody>
             <AdminListContent>
               <AdminListHeader>
-                <SearchBar />
+                <SearchBar onChange={handleSearchChange} />{' '}
                 <UniversalButton
                   onClick={() => setAddModal(true)}
                   size='mediumSmall'

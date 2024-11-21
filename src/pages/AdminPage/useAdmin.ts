@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback, useMemo, useState } from 'react';
 
 import {
   sortOrders,
@@ -19,6 +19,7 @@ interface UseAdminResult {
   numberOfPages: number;
   startIndex: number;
   endIndex: number;
+  handleSearchChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 const fakeAdmins: Admin[] = [
@@ -59,26 +60,41 @@ export const useAdmin = (pageData: {
   rowsPerPage: number;
 }): UseAdminResult => {
   const { page, rowsPerPage } = pageData;
-  const [sortOrder, setSortOrder] = React.useState<keyof typeof sortOrders>(
+
+  const [sortOrder, setSortOrder] = useState<keyof typeof sortOrders>(
     sortOrders.asc
   );
+  const [searchValue, setSearchValue] = useState('');
 
-  const handleSort = (): void => {
+  const handleSort = useCallback(() => {
     setSortOrder((prevOrder) => getNextSortOrder(prevOrder));
-  };
+  }, []);
 
-  const sortedAdmins = React.useMemo(() => {
-    return [...fakeAdmins].sort((a, b) =>
+  const handleSearchChange = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      setSearchValue(e.target.value.toLowerCase());
+    },
+    []
+  );
+
+  const filteredAdmins = useMemo(() => {
+    return fakeAdmins.filter((admin) =>
+      admin.organization_name.toLowerCase().includes(searchValue)
+    );
+  }, [searchValue]);
+
+  const sortedAdmins = useMemo(() => {
+    return [...filteredAdmins].sort((a, b) =>
       sortOrder === sortOrders.asc
         ? a.organization_name.localeCompare(b.organization_name)
         : b.organization_name.localeCompare(a.organization_name)
     );
-  }, [sortOrder]);
+  }, [filteredAdmins, sortOrder]);
 
+  const totalAdmins = sortedAdmins.length;
+  const numberOfPages = Math.ceil(totalAdmins / rowsPerPage);
   const startIndex = (page - 1) * rowsPerPage;
   const endIndex = startIndex + rowsPerPage;
-  const totalAdmins = fakeAdmins.length;
-  const numberOfPages = Math.ceil(totalAdmins / rowsPerPage);
 
   const adminsData = sortedAdmins.slice(startIndex, endIndex);
 
@@ -90,5 +106,6 @@ export const useAdmin = (pageData: {
     numberOfPages,
     startIndex,
     endIndex,
+    handleSearchChange,
   };
 };

@@ -12,28 +12,21 @@ import {
 import { BodySmall } from '@/assets/styles/typography';
 
 interface CompanyPaginationProps {
-  paginationProps: {
-    totalCompanies: number;
-    numberOfPages: number;
-    startIndex: number;
-    endIndex: number;
-    handlePageChange: (
-      event: React.ChangeEvent<unknown>,
-      value: number
-    ) => void;
-    handleSelectChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
-  };
+  totalCompanies: number;
+  numberOfPages: number;
+  startIndex: number;
+  endIndex: number;
+  handlePageChange: (event: React.ChangeEvent<unknown>, value: number) => void;
+  handleSelectChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
 }
 
 export const CompanyPagination = ({
-  paginationProps: {
-    totalCompanies,
-    numberOfPages,
-    startIndex,
-    endIndex,
-    handlePageChange,
-    handleSelectChange,
-  },
+  totalCompanies,
+  numberOfPages,
+  startIndex,
+  endIndex,
+  handlePageChange,
+  handleSelectChange,
 }: CompanyPaginationProps): React.ReactNode => {
   return (
     <PaginationWrapper>

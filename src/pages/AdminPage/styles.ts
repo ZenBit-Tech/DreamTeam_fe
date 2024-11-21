@@ -64,19 +64,8 @@ export const AdminListFilter = styled.div`
   padding: 20px;
 `;
 
-export const AdminName = styled.div`
-  display: flex;
-  gap: 8px;
-`;
-
-export const AdminPagination = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-
 interface SortButtonProps {
-  sortOrder: keyof typeof sortOrders; // Тип для sortOrder будет 'asc' или 'desc'
+  sortOrder: keyof typeof sortOrders;
 }
 
 export const SortButton = styled(BodyBase)<SortButtonProps>`
@@ -95,7 +84,7 @@ export const SortButton = styled(BodyBase)<SortButtonProps>`
 
   img {
     width: 22px;
-    transform: ${(props) =>
+    transform: ${(props): string =>
       props.sortOrder === sortOrders.asc ? 'rotate(0deg)' : 'rotate(180deg)'};
     transition: transform 0.2s ease;
   }

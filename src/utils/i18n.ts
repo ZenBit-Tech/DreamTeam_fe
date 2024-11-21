@@ -38,26 +38,14 @@ const resources = {
       },
       companyList: 'Company List',
       addNewCompany: 'Add New Company',
+      addNewAdmin: 'Add New Admin',
       companyName: 'Company Name',
       actions: 'Actions',
+      adminName: 'Admin Name',
       companiesShown:
         'Showing {{startIndex}} to {{endIndex}} of {{totalCompanies}} companies',
       adminShow:
         'Showing {{startIndex}} to {{endIndex}} of {{totalAdmins}} admins',
-      adminList: 'Admin List',
-      addNewAdmin: 'Add New Admin',
-      adminName: 'Admin Name',
-      sortIconAlt: 'Sort Icon',
-      showing: 'Showing',
-      to: 'to',
-      of: 'of',
-      admins: 'admins',
-      previous: 'Previous',
-      next: 'Next',
-      enterAdminName: 'Enter Admin Name',
-      details: 'Details',
-      edit: 'Edit',
-      back: 'back',
       company: 'Company',
       organizationName: 'Organization Name',
       submit: 'Submit',
@@ -72,10 +60,14 @@ const resources = {
       successLoginMessage: 'Login link sent to your email',
       userNotFoundError: 'Please enter valid credentials',
       errorMessage: 'Oops, something went wrong, please try again later',
+      search: 'Search',
+      faliedToLoad: 'Failed to load companies data',
       breadcrumbs: {
         companyList: 'Company List',
         companyName: 'Company Name',
       },
+      clientNameSideBar: 'John Doe',
+      emailSideBar: 'vafgot@vultukir.org',
     },
   },
   fr: {
@@ -119,7 +111,7 @@ const resources = {
       actions: 'Actes',
       companiesShown:
         'Affichage de {{startIndex}} à {{endIndex}} sur {{totalCompanies}} entreprises',
-      adminShown:
+      adminShow:
         'Affichage de {{startIndex}} à {{endIndex}} sur {{totalAdmins}} administrateurs',
       adminList: 'Liste des administrateurs',
       addNewAdmin: 'Ajouter un nouvel administrateur',
@@ -152,10 +144,14 @@ const resources = {
         "Veuillez saisir des informations d'identification valides",
       errorMessage:
         "Oups, quelque chose s'est mal passé, veuillez réessayer plus tard",
+      search: 'recherche',
+      faliedToLoad: 'Impossible de charger les données des entreprises',
       breadcrumbs: {
         companyList: 'Liste Des Entreprises',
         companyName: "Nom de l'entreprise",
       },
+      clientNameSideBar: 'John Doe',
+      emailSideBar: 'vafgot@vultukir.org',
     },
   },
 };

@@ -15,7 +15,7 @@ import {
   CenterPagination,
   PaginationWrapper,
   StatusText,
-} from '@/components/CompanyPagination/styles.ts';
+} from '@/pages/SuperAdminPage/components/CompanyPagination/styles.ts';
 
 interface AdminPaginationProps {
   paginationProps: {

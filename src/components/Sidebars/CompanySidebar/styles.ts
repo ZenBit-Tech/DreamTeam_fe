@@ -15,7 +15,7 @@ export const SidebarContainer = styled.div`
   min-width: 312px;
   border-radius: 8px;
   border: 1px solid ${COLORS.primaryContainer};
-  background-color: #ffffff;
+  background-color: ${COLORS.surfaceContainerLowest};
 `;
 
 export const HeadingSection = styled.div`
@@ -27,16 +27,14 @@ export const HeadingSection = styled.div`
 `;
 
 export const Title = styled(Heading)`
-  font-size: 18px;
   font-weight: bold;
-  color: #1a1a1a;
+  color: ${COLORS.onSecondaryFixed};
 `;
 
 export const BackLink = styled(Paragraph)`
   display: flex;
   align-items: center;
   gap: 10px;
-  font-size: 14px;
   color: ${COLORS.scrim};
   text-decoration: none;
   cursor: pointer;
@@ -67,13 +65,11 @@ export const DetailRow = styled.div`
 `;
 
 export const DetailLabel = styled(BodyStrong)`
-  font-size: 14px;
   color: ${COLORS.secondary};
   margin-right: 4px;
 `;
 
 export const DetailValue = styled(BodyBase)`
-  font-size: 14px;
   font-weight: 500;
 `;
 
