@@ -15,10 +15,11 @@ export const AdminPageContainer = styled.div`
 `;
 
 export const AdminPageListContainer = styled.div`
-  width: 1016px;
+  flex-grow: 1;
   display: flex;
   flex-direction: column;
-  padding: 16px 0px;
+  padding: 16px;
+  margin: 0 16px;
   border: 2px solid ${COLORS.primaryContainer};
   border-radius: 8px;
 `;
