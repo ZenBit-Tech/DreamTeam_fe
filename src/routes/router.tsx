@@ -4,6 +4,7 @@ import ProtectedRoute from './ProtectedRoute';
 import RestrictedRoute from './RestrictedRoute';
 
 import { pageConfig } from '@/config/pages.config';
+import { AdminPage } from '@/pages/AdminPage';
 import { SignInPage } from '@/pages/SignInPage';
 import { SuperAdminPage } from '@/pages/SuperAdminPage';
 
@@ -25,6 +26,14 @@ const router = createBrowserRouter([
     element: (
       <ProtectedRoute>
         <SuperAdminPage />
+      </ProtectedRoute>
+    ),
+  },
+  {
+    path: pageConfig.admin,
+    element: (
+      <ProtectedRoute>
+        <AdminPage />
       </ProtectedRoute>
     ),
   },

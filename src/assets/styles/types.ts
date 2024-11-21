@@ -8,4 +8,5 @@ export enum IconType {
   Swap = 'Swap',
   Close = 'Close',
   CloseBlack = 'CloseBlack',
+  Back = 'Back',
 }

@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import { COLORS } from '@/assets/styles/constants/colors.ts';
+
 export const Container = styled.div`
   display: flex;
   flex-direction: row;
